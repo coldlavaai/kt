@@ -31,7 +31,7 @@ export default async function handler(req, res) {
   try {
     if (action === 'create') {
       // Create a new chat session
-      const response = await fetch('https://api.retellai.com/v2/create-chat', {
+      const response = await fetch('https://api.retellai.com/create-chat', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${RETELL_API_KEY}`,
@@ -59,7 +59,7 @@ export default async function handler(req, res) {
     }
     else if (action === 'message') {
       // Send a message and get response
-      const response = await fetch('https://api.retellai.com/v2/create-chat-completion', {
+      const response = await fetch('https://api.retellai.com/create-chat-completion', {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${RETELL_API_KEY}`,

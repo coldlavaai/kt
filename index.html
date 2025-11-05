@@ -1771,12 +1771,12 @@
 
         .websites-iframe-container {
             width: 100%;
-            max-width: 1400px;
-            height: 800px;
+            max-width: 100%;
+            height: 850px;
             border-radius: 12px;
             margin: 2rem auto;
             border: 2px solid rgba(0, 255, 127, 0.2);
-            overflow: auto;
+            overflow: hidden;
             background: #000;
             box-shadow: 0 10px 40px rgba(0, 255, 127, 0.2);
             transition: all 0.5s ease;
@@ -1785,6 +1785,8 @@
         .websites-iframe-container.mobile-view {
             max-width: 375px;
             height: 667px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .websites-live-iframe {
@@ -3735,14 +3737,14 @@
 
                     <div class="websites-iframe-container" id="websitesIframeContainer">
                         <iframe
-                            src="https://greenstarwebsiteupgrade.vercel.app/?hideConsent=true"
+                            src="https://greenstar.coldlava.ai/?hideConsent=true"
                             title="Greenstar Solar Website - Live Demo"
                             class="websites-live-iframe"
                             loading="lazy"
                         ></iframe>
                     </div>
 
-                    <a href="https://greenstarwebsiteupgrade.vercel.app/" target="_blank" class="websites-example-link">Open in New Tab →</a>
+                    <a href="https://greenstar.coldlava.ai/" target="_blank" class="websites-example-link">Open in New Tab →</a>
                 </div>
             </div>
         </div>

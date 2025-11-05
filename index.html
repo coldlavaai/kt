@@ -1771,8 +1771,9 @@
         }
 
         .websites-iframe-container {
-            width: 1400px;
-            height: 787px;
+            width: 100%;
+            max-width: 1200px;
+            height: 675px;
             border-radius: 12px;
             margin: 2rem auto;
             border: 2px solid rgba(0, 255, 127, 0.2);
@@ -1783,22 +1784,17 @@
         }
 
         .websites-iframe-container.mobile-view {
-            width: 375px;
+            max-width: 375px;
             height: 667px;
             margin-left: auto;
             margin-right: auto;
         }
 
         .websites-live-iframe {
-            width: 1400px;
-            height: 787px;
+            width: 100%;
+            height: 100%;
             border: none;
             display: block;
-        }
-
-        .websites-iframe-container.mobile-view .websites-live-iframe {
-            width: 375px;
-            height: 667px;
         }
 
         .websites-live-demo {

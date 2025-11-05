@@ -3964,16 +3964,19 @@
             // Show typing indicator
             showTypingIndicator();
 
+            // API Key from environment variable (injected at build time)
+            const API_KEY = '__RETELL_API_KEY__';
+
             try {
                 // If first message, create chat session
                 if (!retellChatId) {
-                    const createResponse = await fetch('/api/chat', {
+                    const createResponse = await fetch('https://api.retellai.com/create-chat', {
                         method: 'POST',
                         headers: {
+                            'Authorization': 'Bearer ' + API_KEY,
                             'Content-Type': 'application/json'
                         },
                         body: JSON.stringify({
-                            action: 'create',
                             agent_id: AGENT_ID
                         })
                     });
@@ -3995,13 +3998,13 @@
                 }
 
                 // Send message to chat
-                const messageResponse = await fetch('/api/chat', {
+                const messageResponse = await fetch('https://api.retellai.com/create-chat-completion', {
                     method: 'POST',
                     headers: {
+                        'Authorization': 'Bearer ' + API_KEY,
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        action: 'message',
                         chat_id: retellChatId,
                         content: message
                     })
@@ -4020,9 +4023,9 @@
                 removeTypingIndicator();
 
                 // Add bot response to chat
-                if (messageData.response && messageData.response.length > 0) {
+                if (messageData.messages && messageData.messages.length > 0) {
                     // Get the last message from the agent
-                    const lastMessage = messageData.response[messageData.response.length - 1];
+                    const lastMessage = messageData.messages[messageData.messages.length - 1];
                     if (lastMessage.role === 'agent' || lastMessage.role === 'assistant') {
                         addMessageToChat(lastMessage.content, 'bot');
                     }

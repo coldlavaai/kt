@@ -3631,7 +3631,30 @@
         </div>
     </div>
 
-    <!-- No JavaScript needed - Retell button is transparent and clickable -->
+    <script>
+        // Click handler to trigger Retell button
+        document.addEventListener('click', function(e) {
+            const widget = document.querySelector('.cold-lava-widget');
+            if (!widget) return;
+
+            const rect = widget.getBoundingClientRect();
+            const x = e.clientX;
+            const y = e.clientY;
+
+            // Check if click is within widget bounds
+            if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                // Find and click the Retell button in shadow DOM
+                document.querySelectorAll('*').forEach(el => {
+                    if (el.shadowRoot) {
+                        const fab = el.shadowRoot.querySelector('.retell-fab');
+                        if (fab) {
+                            fab.click();
+                        }
+                    }
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>

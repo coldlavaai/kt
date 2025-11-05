@@ -3,6 +3,10 @@
     "api/chat.js": {
       "memory": 1024,
       "maxDuration": 10
+    },
+    "api/retell-web-call.js": {
+      "memory": 1024,
+      "maxDuration": 10
     }
   },
   "rewrites": [

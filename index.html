@@ -2795,40 +2795,184 @@
                 display: none;
             }
         }
+
+        /* Chat Interface Styles */
+        .widget-modal {
+            display: none;
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            z-index: 10000;
+        }
+
+        .widget-modal-content {
+            background: rgba(10, 10, 51, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            border: 1px solid rgba(2, 187, 212, 0.3);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+            width: 380px;
+            max-width: 90vw;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(2, 187, 212, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(2, 187, 212, 0.05);
+        }
+
+        .widget-modal-close {
+            font-size: 28px;
+            font-weight: 300;
+            color: #aaa;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+
+        .widget-modal-close:hover {
+            color: #02bbd4;
+        }
+
+        .chat-messages {
+            padding: 20px;
+            height: 400px;
+            max-height: 50vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(2, 187, 212, 0.3);
+            border-radius: 3px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb:hover {
+            background: rgba(2, 187, 212, 0.5);
+        }
+
+        .chat-message {
+            display: flex;
+            margin-bottom: 8px;
+        }
+
+        .user-message {
+            justify-content: flex-end;
+        }
+
+        .bot-message {
+            justify-content: flex-start;
+        }
+
+        .message-content {
+            max-width: 75%;
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .user-message .message-content {
+            background: linear-gradient(135deg, #02bbd4, #4a90e2);
+            color: white;
+            border-bottom-right-radius: 4px;
+        }
+
+        .bot-message .message-content {
+            background: rgba(255, 255, 255, 0.05);
+            color: #e0e0e0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom-left-radius: 4px;
+        }
+
+        .chat-input-container {
+            padding: 16px 20px;
+            border-top: 1px solid rgba(2, 187, 212, 0.2);
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            background: rgba(2, 187, 212, 0.05);
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid rgba(2, 187, 212, 0.3);
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s;
+        }
+
+        .chat-input:focus {
+            border-color: #02bbd4;
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(2, 187, 212, 0.1);
+        }
+
+        .chat-input::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .chat-send-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: none;
+            background: linear-gradient(135deg, #02bbd4, #4a90e2);
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(2, 187, 212, 0.4);
+        }
+
+        .chat-send-btn:active {
+            transform: scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .widget-modal {
+                bottom: 86px;
+                right: 20px;
+                left: 20px;
+            }
+
+            .widget-modal-content {
+                width: 100%;
+            }
+
+            .chat-messages {
+                height: 300px;
+            }
+        }
     </style>
-
-    <!-- Retell AI Widget Script - Transparent overlay -->
-    <style>
-        /* Make the Retell widget container transparent but still clickable */
-        body > div:not([class]):not([id]) {
-            opacity: 0 !important;
-            pointer-events: auto !important;
-            z-index: 10000 !important; /* Above our widget */
-        }
-
-        /* Make sure our custom widget shows behind it but is visible */
-        .cold-lava-widget {
-            pointer-events: none !important; /* Don't intercept clicks */
-            z-index: 9999 !important; /* Below the transparent Retell button */
-        }
-
-        .cold-lava-widget .widget-tooltip {
-            pointer-events: none !important;
-        }
-    </style>
-    <script
-        id="retell-widget"
-        src="https://dashboard.retellai.com/retell-widget.js"
-        data-public-key="public_key_09bbd18bfb973540a625d"
-        data-agent-id="agent_81da82d9b3ff61a0d0918ae0f2"
-        data-title="Sophie • AI Assistant"
-        data-bot-name="Sophie"
-        data-color="#02bbd4"
-        data-logo-url="coldlava-icon.png"
-        data-auto-open="false"
-        data-show-ai-popup="false"
-    ></script>
-
 
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '1680728342604919');
@@ -3624,14 +3768,191 @@
 
     <!-- Cold Lava Chat Widget -->
     <div class="cold-lava-widget">
-        <a href="tel:+441515416933" class="widget-button" id="coldLavaWidgetBtn">
+        <button class="widget-button" id="coldLavaWidgetBtn">
             <img src="coldlava-icon.png" alt="Cold Lava AI" class="widget-logo">
             <div class="widget-tooltip">
                 <p class="widget-tooltip-title">Chat to Sophie</p>
                 <p class="widget-tooltip-subtitle">AI Assistant</p>
             </div>
-        </a>
+        </button>
     </div>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="widget-modal" style="display: none;">
+        <div class="widget-modal-content chat-container">
+            <div class="chat-header">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <img src="coldlava-icon.png" alt="Sophie" style="width: 40px; height: 40px; border-radius: 50%;">
+                    <div>
+                        <h3 style="margin: 0; color: #02bbd4; font-size: 18px;">Sophie</h3>
+                        <p style="margin: 0; font-size: 12px; color: #aaa;">AI Assistant</p>
+                    </div>
+                </div>
+                <span class="widget-modal-close" id="closeChat">&times;</span>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-message bot-message">
+                    <div class="message-content">
+                        👋 Hi! I'm Sophie, Cold Lava's AI assistant. How can I help you today?
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <input type="text" id="chatInput" class="chat-input" placeholder="Type your message..." />
+                <button id="sendMessage" class="chat-send-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="widget-footer">
+                Powered by <strong style="color: #02bbd4;">Cold Lava AI</strong>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Widget Script -->
+    <script>
+        let chatId = null;
+        let isWaitingForResponse = false;
+
+        // Open chat modal
+        document.getElementById('coldLavaWidgetBtn').addEventListener('click', function() {
+            document.getElementById('chatModal').style.display = 'flex';
+            document.getElementById('chatInput').focus();
+
+            // Track in Facebook Pixel
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent', {content_name: 'Chat Widget Opened'});
+            }
+        });
+
+        // Close chat modal
+        document.getElementById('closeChat').addEventListener('click', function() {
+            document.getElementById('chatModal').style.display = 'none';
+        });
+
+        // Close on outside click
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('chatModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                document.getElementById('chatModal').style.display = 'none';
+            }
+        });
+
+        // Send message on Enter key
+        document.getElementById('chatInput').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter' && !isWaitingForResponse) {
+                sendMessage();
+            }
+        });
+
+        // Send message on button click
+        document.getElementById('sendMessage').addEventListener('click', function() {
+            if (!isWaitingForResponse) {
+                sendMessage();
+            }
+        });
+
+        async function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+
+            if (!message) return;
+
+            // Add user message to chat
+            addMessageToChat(message, 'user');
+            input.value = '';
+            isWaitingForResponse = true;
+
+            try {
+                // Create chat session if this is the first message
+                if (!chatId) {
+                    const createResponse = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            action: 'create'
+                        })
+                    });
+
+                    if (!createResponse.ok) {
+                        throw new Error('Failed to create chat session');
+                    }
+
+                    const createData = await createResponse.json();
+                    chatId = createData.chat_id;
+
+                    // Track first message in Facebook Pixel
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'Contact', {content_name: 'First Chat Message Sent'});
+                    }
+                }
+
+                // Send message
+                const messageResponse = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        action: 'message',
+                        chatId: chatId,
+                        message: message
+                    })
+                });
+
+                if (!messageResponse.ok) {
+                    throw new Error('Failed to send message');
+                }
+
+                const messageData = await messageResponse.json();
+
+                // Add bot response to chat
+                if (messageData.response) {
+                    addMessageToChat(messageData.response, 'bot');
+                }
+
+            } catch (error) {
+                console.error('Chat error:', error);
+                addMessageToChat(
+                    'Sorry, I\'m having trouble connecting. Please try again or contact us at oliver@otdm.net',
+                    'bot'
+                );
+            } finally {
+                isWaitingForResponse = false;
+            }
+        }
+
+        function addMessageToChat(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `chat-message ${sender === 'user' ? 'user-message' : 'bot-message'}`;
+
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'message-content';
+            contentDiv.textContent = message;
+
+            messageDiv.appendChild(contentDiv);
+            messagesContainer.appendChild(messageDiv);
+
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+    </script>
 
 </body>
 </html>

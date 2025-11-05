@@ -2519,6 +2519,8 @@
             position: relative;
             overflow: visible;
             animation: widget-pulse 3s ease-in-out infinite;
+            text-decoration: none;
+            pointer-events: auto !important;
         }
 
         @keyframes widget-pulse {
@@ -3622,39 +3624,14 @@
 
     <!-- Cold Lava Chat Widget -->
     <div class="cold-lava-widget">
-        <div class="widget-button" id="coldLavaWidgetBtn">
+        <a href="tel:+441515416933" class="widget-button" id="coldLavaWidgetBtn">
             <img src="coldlava-icon.png" alt="Cold Lava AI" class="widget-logo">
             <div class="widget-tooltip">
                 <p class="widget-tooltip-title">Chat to Sophie</p>
                 <p class="widget-tooltip-subtitle">AI Assistant</p>
             </div>
-        </div>
+        </a>
     </div>
-
-    <script>
-        // Click handler to trigger Retell button
-        document.addEventListener('click', function(e) {
-            const widget = document.querySelector('.cold-lava-widget');
-            if (!widget) return;
-
-            const rect = widget.getBoundingClientRect();
-            const x = e.clientX;
-            const y = e.clientY;
-
-            // Check if click is within widget bounds
-            if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-                // Find and click the Retell button in shadow DOM
-                document.querySelectorAll('*').forEach(el => {
-                    if (el.shadowRoot) {
-                        const fab = el.shadowRoot.querySelector('.retell-fab');
-                        if (fab) {
-                            fab.click();
-                        }
-                    }
-                });
-            }
-        });
-    </script>
 
 </body>
 </html>

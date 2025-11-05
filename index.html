@@ -2547,13 +2547,24 @@
         }
 
         .widget-button:active {
-            transform: scale(1.05);
+            transform: scale(0.95) translateY(0px) !important;
+            background: rgba(2, 187, 212, 0.4) !important;
+            box-shadow:
+                0 4px 16px rgba(2, 187, 212, 0.6),
+                0 0 0 4px rgba(2, 187, 212, 0.3),
+                inset 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+            transition: all 0.1s ease !important;
         }
 
         .widget-logo {
             width: 40px;
             height: 40px;
             object-fit: contain;
+            transition: transform 0.1s ease;
+        }
+
+        .widget-button:active .widget-logo {
+            transform: scale(0.9);
         }
 
         .widget-tooltip {

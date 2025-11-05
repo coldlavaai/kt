@@ -2503,14 +2503,14 @@
             width: 64px;
             height: 64px;
             border-radius: 50%;
-            background: rgba(2, 187, 212, 0.15);
+            background: rgba(10, 10, 51, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 2px solid rgba(2, 187, 212, 0.3);
             box-shadow:
                 0 8px 32px rgba(2, 187, 212, 0.3),
                 0 0 0 0 rgba(2, 187, 212, 0.5),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -2551,11 +2551,9 @@
         }
 
         .widget-logo {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
+            width: 40px;
+            height: 40px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
         }
 
         .widget-tooltip {
@@ -3579,66 +3577,52 @@
         document.head.appendChild(style);
     </script>
 
-    <!-- Cold Lava Chat Widget -->
+    <!-- Cold Lava Chat Widget with Retell Integration -->
     <div class="cold-lava-widget">
         <div class="widget-button" id="coldLavaWidgetBtn">
             <img src="coldlava-icon.png" alt="Cold Lava AI" class="widget-logo">
             <div class="widget-tooltip">
-                <p class="widget-tooltip-title">Chat with us</p>
-                <p class="widget-tooltip-subtitle">We're here to help</p>
+                <p class="widget-tooltip-title">Chat to Sophie</p>
+                <p class="widget-tooltip-subtitle">AI Assistant</p>
             </div>
             <div class="widget-badge">AI</div>
         </div>
-
-        <div class="widget-modal" id="coldLavaWidgetModal">
-            <div class="widget-modal-header">
-                <img src="coldlava-icon.png" alt="Cold Lava AI" class="widget-modal-logo">
-                <div class="widget-modal-info">
-                    <h3>Cold Lava AI</h3>
-                    <p>Chat with us</p>
-                </div>
-                <button class="widget-modal-close" id="coldLavaWidgetClose">&times;</button>
-            </div>
-            <div class="widget-modal-body">
-                <div style="padding: 20px; text-align: center; color: rgba(255, 255, 255, 0.7);">
-                    <p>Chat functionality coming soon...</p>
-                </div>
-            </div>
-            <div class="widget-powered-by">
-                Powered by <strong>Cold Lava AI</strong>
-            </div>
-        </div>
     </div>
 
+    <!-- Retell AI Widget Script -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.4.0/dist/retell-client-js-sdk.min.js"
+        onload="initRetellWidget()"
+    ></script>
+
     <script>
-        // Cold Lava Widget JavaScript
-        const widgetBtn = document.getElementById('coldLavaWidgetBtn');
-        const widgetModal = document.getElementById('coldLavaWidgetModal');
-        const widgetClose = document.getElementById('coldLavaWidgetClose');
+        // Initialize Retell Widget
+        async function initRetellWidget() {
+            const widgetBtn = document.getElementById('coldLavaWidgetBtn');
 
-        // Toggle widget modal
-        widgetBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            widgetModal.classList.toggle('active');
-        });
+            if (!widgetBtn) return;
 
-        // Close widget modal
-        widgetClose.addEventListener('click', function(e) {
-            e.stopPropagation();
-            widgetModal.classList.remove('active');
-        });
+            widgetBtn.addEventListener('click', async function(e) {
+                e.stopPropagation();
 
-        // Close modal when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!widgetBtn.contains(e.target) && !widgetModal.contains(e.target)) {
-                widgetModal.classList.remove('active');
-            }
-        });
+                try {
+                    // Initialize Retell client
+                    const retellClient = new RetellWebClient();
 
-        // Prevent modal close when clicking inside
-        widgetModal.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
+                    // Start a web call with your agent
+                    await retellClient.startCall({
+                        accessToken: 'public_key_09bbd18bfb973540a625d',
+                        callId: 'agent_81da82d9b3ff61a0d0918ae0f2',
+                        sampleRate: 24000,
+                        enableUpdate: true
+                    });
+
+                    console.log('Retell call started');
+                } catch (error) {
+                    console.error('Error starting Retell call:', error);
+                }
+            });
+        }
     </script>
 
 </body>

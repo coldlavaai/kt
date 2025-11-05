@@ -3610,32 +3610,48 @@
     </div>
 
     <script>
-        // Custom button click handler - triggers hidden Retell button
+        // Hide Retell's default button in shadow DOM
+        function hideRetellButton() {
+            const shadowHosts = document.querySelectorAll('*');
+            shadowHosts.forEach(el => {
+                if (el.shadowRoot) {
+                    const fabButton = el.shadowRoot.querySelector('.retell-fab');
+                    if (fabButton) {
+                        fabButton.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        // Custom button click handler - triggers Retell widget in shadow DOM
         document.addEventListener('DOMContentLoaded', function() {
             const customBtn = document.getElementById('coldLavaWidgetBtn');
+
+            // Hide Retell button once it loads
+            setTimeout(hideRetellButton, 1000);
+            setInterval(hideRetellButton, 2000); // Keep checking
 
             customBtn.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
 
-                // Find and click the hidden Retell widget button
-                const findRetellButton = setInterval(function() {
-                    const retellBtn = document.querySelector('button[data-retell-button]') ||
-                                     document.querySelector('iframe[src*="retell"]')?.parentElement?.querySelector('button') ||
-                                     Array.from(document.querySelectorAll('button')).find(btn =>
-                                         btn.style.position === 'fixed' && btn.style.bottom && btn.style.right
-                                     );
+                // Find and click the Retell button inside shadow DOM
+                const shadowHosts = document.querySelectorAll('*');
+                let clicked = false;
 
-                    if (retellBtn) {
-                        clearInterval(findRetellButton);
-                        retellBtn.click();
+                shadowHosts.forEach(el => {
+                    if (!clicked && el.shadowRoot) {
+                        const fabButton = el.shadowRoot.querySelector('.retell-fab');
+                        if (fabButton) {
+                            fabButton.click();
+                            clicked = true;
+                        }
                     }
-                }, 100);
+                });
 
-                // Stop looking after 5 seconds
-                setTimeout(function() {
-                    clearInterval(findRetellButton);
-                }, 5000);
+                if (!clicked) {
+                    console.log('Retell button not found yet, widget may still be loading');
+                }
             });
         });
     </script>

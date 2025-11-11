@@ -157,6 +157,8 @@
             height: 100%;
             z-index: -3;
             pointer-events: none;
+            will-change: transform;
+            transform: translateZ(0);
         }
 
         .particle {
@@ -164,6 +166,8 @@
             border-radius: 50%;
             animation: ultraFloat 25s linear infinite;
             filter: blur(0.5px);
+            will-change: transform, opacity;
+            transform: translateZ(0);
         }
 
         .particle:nth-child(5n) {
@@ -258,6 +262,8 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            will-change: background, box-shadow;
+            transform: translateZ(0);
         }
 
         .navbar.scrolled {
@@ -2363,6 +2369,8 @@
             z-index: 1001;
             transition: width 0.1s ease;
             animation: gradientSlide 3s ease-in-out infinite;
+            will-change: width;
+            transform: translateZ(0);
         }
 
         /* Luxury Animations */
@@ -4827,14 +4835,22 @@
             });
         }
 
-        // Event listeners (Optimized for Mobile)
-        window.addEventListener('scroll', () => {
-            updateScrollProgress();
-            handleNavbarScroll();
-            if (!isMobile) {
-                handleParallax(); // Skip parallax on mobile for better performance
+        // Event listeners (Properly Throttled)
+        let ticking = false;
+        function handleScroll() {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateScrollProgress();
+                    handleNavbarScroll();
+                    if (!isMobile) {
+                        handleParallax(); // Skip parallax on mobile for better performance
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
-        });
+        }
+        window.addEventListener('scroll', handleScroll, { passive: true });
 
         // Initialize on page load (Mobile Optimized)
         window.addEventListener('load', () => {
@@ -4842,11 +4858,11 @@
             if (!shouldDisableAnimations) {
                 createParticles();
             }
-            
+
             addCardEffects();
-            addMagneticEffect(); 
+            addMagneticEffect();
             addInteractiveBackground();
-            
+
             // Mobile: Show key elements immediately, Desktop: Staggered animation
             setTimeout(() => {
                 if (shouldDisableAnimations) {
@@ -4872,21 +4888,6 @@
                 }
             }, isMobile ? 100 : 500);
         });
-
-        // Performance optimization with throttling (Desktop Only)
-        if (!isMobile) {
-            let ticking = false;
-            function requestTick() {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        handleParallax();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-            window.addEventListener('scroll', requestTick);
-        }
 
         // Add glitch effect on logo hover (Desktop Only)
         if (!isMobile) {

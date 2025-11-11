@@ -1896,112 +1896,166 @@
             box-shadow: 0 20px 60px rgba(0, 255, 127, 0.5);
         }
 
-        /* Featured Testimonial (Hero) */
-        .featured-testimonial {
-            padding: 4rem 2rem 2rem;
-            max-width: 900px;
+        /* Top Testimonials - All 3 Reviews */
+        .top-testimonials {
+            padding: 3rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .featured-testimonial-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 2px solid rgba(0, 182, 122, 0.3);
-            border-radius: 30px;
-            padding: 3rem;
-            box-shadow: 0 20px 60px rgba(0, 182, 122, 0.2);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        .top-testimonials-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        .featured-testimonial-card:hover {
-            border-color: #00b67a;
-            box-shadow: 0 25px 70px rgba(0, 182, 122, 0.35);
-            transform: translateY(-5px);
-        }
-
-        .featured-testimonial-header {
+        .trustpilot-badge-compact {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .featured-trustpilot-badge {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            gap: 0.75rem;
             background: rgba(0, 182, 122, 0.1);
-            padding: 0.5rem 1rem;
+            padding: 0.6rem 1.5rem;
             border-radius: 50px;
             border: 1px solid rgba(0, 182, 122, 0.3);
         }
 
-        .featured-trustpilot-badge span {
+        .trustpilot-badge-compact span {
             font-weight: 700;
             color: #00b67a;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
 
-        .featured-testimonial-stars {
+        .stars-compact {
             display: flex;
             gap: 0.2rem;
         }
 
-        .featured-star {
+        .star-compact {
             width: 18px;
             height: 18px;
             fill: #00b67a;
         }
 
-        .featured-testimonial-text {
-            font-size: 1.25rem;
-            line-height: 1.8;
-            color: var(--text-light);
-            font-weight: 500;
-            margin-bottom: 2rem;
-            font-style: italic;
+        .trustpilot-link-compact {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
         }
 
-        .featured-testimonial-author {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 2rem;
+        .trustpilot-link-compact:hover {
+            color: #00b67a;
+            text-decoration: underline;
         }
 
-        .featured-author-info {
+        .top-testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .top-testimonial-card {
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .featured-author-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 0.3rem;
+        .top-testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: #00b67a;
+            box-shadow: 0 10px 40px rgba(0, 182, 122, 0.3);
         }
 
-        .featured-author-date {
+        .top-stars {
+            display: flex;
+            gap: 0.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .top-star {
+            width: 16px;
+            height: 16px;
+            fill: #00b67a;
+        }
+
+        .top-review-text {
             font-size: 0.95rem;
-            color: var(--text-muted);
+            line-height: 1.6;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
-        .featured-trustpilot-logo {
+        .top-review-author {
             font-size: 0.85rem;
             color: var(--text-muted);
         }
 
-        .featured-trustpilot-logo a {
-            color: #00b67a;
-            text-decoration: none;
+        .top-review-author strong {
+            color: var(--text-light);
             font-weight: 600;
-            transition: all 0.3s ease;
         }
 
-        .featured-trustpilot-logo a:hover {
-            text-decoration: underline;
+        /* Quote Snippet */
+        .quote-snippet {
+            padding: 4rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .quote-snippet-card {
+            background: linear-gradient(135deg, rgba(0, 182, 122, 0.05), rgba(138, 43, 226, 0.05));
+            border-left: 4px solid #00b67a;
+            border-radius: 15px;
+            padding: 2.5rem 3rem;
+            position: relative;
+        }
+
+        .quote-snippet-text {
+            font-size: 1.5rem;
+            line-height: 1.8;
+            color: var(--text-light);
+            font-weight: 500;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-snippet-author {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .quote-snippet-author strong {
+            color: #00b67a;
+            font-weight: 700;
+        }
+
+        .quote-snippet-icon {
+            position: absolute;
+            top: -15px;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            background: #00b67a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-family: Georgia, serif;
         }
 
         /* Testimonials Section */
@@ -2762,42 +2816,65 @@
                 margin-bottom: 1rem;
             }
 
-            /* Featured Testimonial mobile */
-            .featured-testimonial {
-                padding: 2rem 1rem 1rem;
+            /* Top Testimonials mobile */
+            .top-testimonials {
+                padding: 2rem 1rem;
             }
 
-            .featured-testimonial-card {
+            .top-testimonials-grid {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .top-testimonial-card {
                 padding: 1.5rem;
-                border-radius: 20px;
             }
 
-            .featured-testimonial-header {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 0.75rem;
-                margin-bottom: 1.5rem;
+            .top-review-text {
+                font-size: 0.9rem;
+                line-height: 1.55;
             }
 
-            .featured-testimonial-text {
-                font-size: 1rem;
-                line-height: 1.6;
+            .top-review-author {
+                font-size: 0.8rem;
             }
 
-            .featured-testimonial-author {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-                padding-top: 1.5rem;
+            .top-star {
+                width: 14px;
+                height: 14px;
             }
 
-            .featured-author-name {
-                font-size: 1.1rem;
-            }
-
-            .featured-star {
+            .star-compact {
                 width: 16px;
                 height: 16px;
+            }
+
+            /* Quote Snippet mobile */
+            .quote-snippet {
+                padding: 2.5rem 1rem;
+            }
+
+            .quote-snippet-card {
+                padding: 2rem 1.5rem 1.5rem;
+            }
+
+            .quote-snippet-text {
+                font-size: 1.1rem;
+                line-height: 1.6;
+                margin-bottom: 1rem;
+            }
+
+            .quote-snippet-author {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .quote-snippet-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+                left: 1.5rem;
             }
 
             /* Testimonials Section mobile */
@@ -3898,41 +3975,107 @@
         </div>
     </section>
 
-    <!-- Featured Testimonial -->
-    <section class="featured-testimonial">
-        <div class="featured-testimonial-card fade-in">
-            <div class="featured-testimonial-header">
-                <div class="featured-trustpilot-badge">
-                    <span>5.0</span>
-                    <div class="featured-testimonial-stars">
-                        <svg class="featured-star" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                        </svg>
-                        <svg class="featured-star" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                        </svg>
-                        <svg class="featured-star" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                        </svg>
-                        <svg class="featured-star" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                        </svg>
-                        <svg class="featured-star" viewBox="0 0 24 24">
-                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                        </svg>
-                    </div>
+    <!-- Top Testimonials - All 3 Reviews -->
+    <section class="top-testimonials">
+        <div class="top-testimonials-header fade-in">
+            <div class="trustpilot-badge-compact">
+                <span>TrustScore 4.0</span>
+                <div class="stars-compact">
+                    <svg class="star-compact" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star-compact" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star-compact" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star-compact" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="star-compact" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </div>
             </div>
-            <p class="featured-testimonial-text">
-                "We recently worked with Cold Lava to develop a new website and explore AI solutions for our telesales business and the experience has been exceptional from start to finish. Oli and Jacob are incredibly efficient, knowledgeable, and easy to work with. They took the time to understand our needs, offered creative and practical solutions, and delivered everything on time (and often ahead of schedule). Their professionalism and attention to detail have made a real difference to our business, and the end result has far exceeded our expectations."
-            </p>
-            <div class="featured-testimonial-author">
-                <div class="featured-author-info">
-                    <div class="featured-author-name">Jack Castle</div>
-                    <div class="featured-author-date">November 2025</div>
+            <a href="https://www.trustpilot.com/review/coldlava.ai" target="_blank" rel="noopener noreferrer" class="trustpilot-link-compact fade-in">
+                View all reviews →
+            </a>
+        </div>
+
+        <div class="top-testimonials-grid">
+            <!-- Review 1 - Jack Castle -->
+            <div class="top-testimonial-card fade-in">
+                <div class="top-stars">
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
                 </div>
-                <div class="featured-trustpilot-logo">
-                    Review from <a href="https://www.trustpilot.com/review/coldlava.ai" target="_blank" rel="noopener noreferrer">Trustpilot</a>
+                <p class="top-review-text">"We recently worked with Cold Lava to develop a new website and explore AI solutions for our telesales business and the experience has been exceptional from start to finish. Oli and Jacob are incredibly efficient, knowledgeable, and easy to work with. They took the time to understand our needs, offered creative and practical solutions, and delivered everything on time (and often ahead of schedule). Their professionalism and attention to detail have made a real difference to our business, and the end result has far exceeded our expectations."</p>
+                <div class="top-review-author">
+                    <strong>Jack Castle</strong> · November 2025
+                </div>
+            </div>
+
+            <!-- Review 2 - Jason Wides -->
+            <div class="top-testimonial-card fade-in">
+                <div class="top-stars">
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                <p class="top-review-text">"Since working with Cold Lava AI, things have completely changed for the better. Jacob and Oli have helped us automate our whole sales process, brought AI into the mix to make things run smoother, and built us a brand new website that looks and represents the business brilliantly. Everything feels so much more efficient now, and the whole process has been super easy and relaxed from start to finish."</p>
+                <div class="top-review-author">
+                    <strong>Jason Wides</strong> · November 2025
+                </div>
+            </div>
+
+            <!-- Review 3 - Austin Eszcori -->
+            <div class="top-testimonial-card fade-in">
+                <div class="top-stars">
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                    <svg class="top-star" viewBox="0 0 24 24">
+                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+                    </svg>
+                </div>
+                <p class="top-review-text">"I currently use Cold Lava for my vehicle detailing business. We have an AI assistant who can answer the phone, grab details and even book jobs if I can't get to the phone. It massively helps us make sure we capture every client possible. A great system to use and incredibly affordable compared to a full time member of staff!"</p>
+                <div class="top-review-author">
+                    <strong>Austin Eszcori</strong> · October 2025
                 </div>
             </div>
         </div>
@@ -4329,6 +4472,19 @@
             </div>
         </div>
     </section>
+    <!-- Quote Snippet -->
+    <section class="quote-snippet">
+        <div class="quote-snippet-card fade-in">
+            <div class="quote-snippet-icon">"</div>
+            <p class="quote-snippet-text">
+                Their professionalism and attention to detail have made a real difference to our business.
+            </p>
+            <div class="quote-snippet-author">
+                <span><strong>Jack Castle</strong> · Client Review</span>
+                <a href="https://www.trustpilot.com/review/coldlava.ai" target="_blank" rel="noopener noreferrer" style="color: #00b67a; text-decoration: none;">Trustpilot</a>
+            </div>
+        </div>
+    </section>
 
     <!-- AI-Ready Websites Section -->
 
@@ -4378,124 +4534,18 @@
             </div>
         </div>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials-section">
-        <div class="section-divider"></div>
-        <div class="testimonials-header">
-            <h2 class="section-title fade-in">What Our Clients Say</h2>
-            <div class="trustpilot-score fade-in">
-                <span>TrustScore 4.0</span>
-                <div class="trustpilot-stars">
-                    <svg class="trustpilot-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="trustpilot-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="trustpilot-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="trustpilot-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="trustpilot-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                </div>
-            </div>
-            <a href="https://www.trustpilot.com/review/coldlava.ai" target="_blank" rel="noopener noreferrer" class="trustpilot-link fade-in">
-                View all reviews on Trustpilot →
-            </a>
-        </div>
 
-        <div class="testimonials-grid">
-            <!-- Testimonial 1 -->
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                </div>
-                <p class="testimonial-text">
-                    "We recently worked with Cold Lava to develop a new website and explore AI solutions for our telesales business and the experience has been exceptional from start to finish. Oli and Jacob are incredibly efficient, knowledgeable, and easy to work with. They took the time to understand our needs, offered creative and practical solutions, and delivered everything on time (and often ahead of schedule). Their professionalism and attention to detail have made a real difference to our business, and the end result has far exceeded our expectations."
-                </p>
-                <div class="testimonial-author">
-                    <div class="testimonial-name">Jack Castle</div>
-                    <div class="testimonial-date">November 2025</div>
-                </div>
+    <!-- Quote Snippet -->
+    <section class="quote-snippet">
+        <div class="quote-snippet-card fade-in">
+            <div class="quote-snippet-icon">"</div>
+            <p class="quote-snippet-text">
+                Their professionalism and attention to detail have made a real difference to our business.
+            </p>
+            <div class="quote-snippet-author">
+                <span><strong>Jack Castle</strong> · Client Review</span>
+                <a href="https://www.trustpilot.com/review/coldlava.ai" target="_blank" rel="noopener noreferrer" style="color: #00b67a; text-decoration: none;">Trustpilot</a>
             </div>
-
-            <!-- Testimonial 2 -->
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                </div>
-                <p class="testimonial-text">
-                    "Since working with Cold Lava AI, things have completely changed for the better. Jacob and Oli have helped us automate our whole sales process, brought AI into the mix to make things run smoother, and built us a brand new website that looks and represents the business brilliantly. Everything feels so much more efficient now, and the whole process has been super easy and relaxed from start to finish."
-                </p>
-                <div class="testimonial-author">
-                    <div class="testimonial-name">Jason Wides</div>
-                    <div class="testimonial-date">November 2025</div>
-                </div>
-            </div>
-
-            <!-- Testimonial 3 -->
-            <div class="testimonial-card fade-in">
-                <div class="testimonial-stars">
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                    <svg class="testimonial-star" viewBox="0 0 24 24">
-                        <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
-                    </svg>
-                </div>
-                <p class="testimonial-text">
-                    "I currently use Cold Lava for my vehicle detailing business. We have an AI assistant who can answer the phone, grab details and even book jobs if I can't get to the phone. It massively helps us make sure we capture every client possible. A great system to use and incredibly affordable compared to a full time member of staff!"
-                </p>
-                <div class="testimonial-author">
-                    <div class="testimonial-name">Austin Eszcori</div>
-                    <div class="testimonial-date">October 2025</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="trustpilot-attribution">
-            Reviews powered by <a href="https://www.trustpilot.com" target="_blank" rel="noopener noreferrer">Trustpilot</a>
         </div>
     </section>
 

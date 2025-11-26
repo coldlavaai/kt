@@ -27,6 +27,7 @@ const filesToCopy = [
   'sophie-avatar.png',
   'glowing-orb.png',
   'privacy.html',
+  'terms.html',
   'favicon.png'
 ];
 

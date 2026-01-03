@@ -15,19 +15,20 @@ export function LavaMesh({ quality }: LavaMeshProps) {
   const { zones } = useLavaContext()
   const { scrollProgress, scrollVelocity } = useLenis()
 
-  // Initialize blob positions
+  // Initialize blob positions (distributed for intelligent pathfinding)
   const blobPositions = useMemo(() => {
     const positions = new Float32Array(40) // 10 blobs * 4 (xyzw)
     const blobCount = quality < 0.6 ? 4 : quality < 0.9 ? 7 : 10
 
     for (let i = 0; i < blobCount; i++) {
-      const angle = (i / blobCount) * Math.PI * 2
-      const radius = 0.5 + Math.random() * 0.3
+      // Distribute blobs to explore negative space
+      const angle = (i / blobCount) * Math.PI * 2 + Math.random() * 0.3
+      const radius = 0.6 + Math.random() * 0.4  // Wider spread for pathfinding
 
       positions[i * 4 + 0] = Math.cos(angle) * radius  // x
       positions[i * 4 + 1] = Math.sin(angle) * radius  // y
-      positions[i * 4 + 2] = (Math.random() - 0.5) * 0.5  // z
-      positions[i * 4 + 3] = 0.3 + Math.random() * 0.2   // radius
+      positions[i * 4 + 2] = (Math.random() - 0.5) * 0.6  // z depth
+      positions[i * 4 + 3] = 0.25 + Math.random() * 0.25  // radius (varied for squeezing)
     }
 
     return positions

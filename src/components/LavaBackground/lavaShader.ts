@@ -151,9 +151,13 @@ export const fragmentShader = /* glsl */ `
     return basePos + offset;
   }
 
-  // Combined metaballs SDF
+  // Combined metaballs SDF with intelligent deformation
   float sdMetaballs(vec3 p) {
     float d = 1e10;
+
+    // Get distance to nearest content for deformation
+    vec2 screenPos = p.xy;
+    float contentDist = getNearestContent(screenPos);
 
     for (int i = 0; i < 10; i++) {
       if (i >= uBlobCount) break;
@@ -162,20 +166,26 @@ export const fragmentShader = /* glsl */ `
       vec3 blobPos = getBlobPosition(i, uTime);
       float radius = blobData.w;
 
-      float blob = sdMetaball(p, blobPos, radius);
-      d = smin(d, blob, 0.5);  // Smooth blend
+      // Deform blobs near content - squeeze/elongate to navigate gaps
+      float deformation = smoothstep(0.3, 0.0, contentDist);
+      float squeezeRadius = radius * (1.0 - deformation * 0.4);  // Thinner when near content
+
+      float blob = sdMetaball(p, blobPos, squeezeRadius);
+      d = smin(d, blob, 0.5);  // Smooth blend (strong surface tension)
     }
 
-    // Add noise displacement for organic surface
-    float noise = snoise(p * 1.5 + uTime * 0.1) * 0.1;
+    // Subtle noise for organic surface (not rough texture)
+    float noise = snoise(p * 1.5 + uTime * 0.1) * 0.08;
     d += noise;
 
     return d;
   }
 
-  // Calculate repulsion field from content zones
+  // Calculate intelligent repulsion field from content zones
+  // Goop is "hydrophobic" - treats content like water, never overlaps
   float getRepulsion(vec2 screenPos) {
     float repulsion = 0.0;
+    float minDist = 1e10;
 
     for (int i = 0; i < 10; i++) {
       if (i >= uRepulsionCount) break;
@@ -185,14 +195,33 @@ export const fragmentShader = /* glsl */ `
       vec2 size = zone.zw;
       float strength = uRepulsionStrengths[i];
 
-      // Distance to repulsion zone with larger padding for text readability
-      float dist = sdBox(screenPos, center, size * 1.8);  // Increased padding
+      // Distance to content with comfortable buffer (invisible force field)
+      float dist = sdBox(screenPos, center, size * 2.2);  // Wider margin
+      minDist = min(minDist, dist);
 
-      // Stronger inverse square repulsion for better fade
-      repulsion += (strength * 3.0) / (dist * dist + 0.05);
+      // Strong repulsion field - intelligent avoidance, not panic
+      repulsion += (strength * 4.5) / (dist * dist + 0.03);
     }
 
     return repulsion;
+  }
+
+  // Get nearest content distance for deformation
+  float getNearestContent(vec2 screenPos) {
+    float minDist = 1e10;
+
+    for (int i = 0; i < 10; i++) {
+      if (i >= uRepulsionCount) break;
+
+      vec4 zone = uRepulsionZones[i];
+      vec2 center = zone.xy;
+      vec2 size = zone.zw;
+
+      float dist = sdBox(screenPos, center, size * 2.0);
+      minDist = min(minDist, dist);
+    }
+
+    return minDist;
   }
 
   // ========== RAYMARCHING ==========

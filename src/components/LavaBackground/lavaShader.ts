@@ -114,29 +114,39 @@ export const fragmentShader = /* glsl */ `
     return length(max(d, 0.0)) + min(max(d.x, d.y), 0.0);
   }
 
-  // Get organic blob position with flowing animation
+  // Smooth easing function for controlled movement
+  float easeInOutSine(float x) {
+    return -(cos(3.14159 * x) - 1.0) / 2.0;
+  }
+
+  // Get goop blob position with controlled, purposeful movement
   vec3 getBlobPosition(int index, float time) {
     if (index >= uBlobCount) return vec3(0.0);
 
     vec4 blobData = uBlobPositions[index];
     vec3 basePos = blobData.xyz;
 
-    // More dynamic flowing movement
-    float t = time * 0.5;  // Faster time multiplier for visible flow
+    // Controlled, purposeful movement with smooth easing
+    float t = time * 0.35;  // Moderate speed, controlled
     float phase = float(index) * 1.618;  // Golden ratio for variation
 
+    // Primary movement with smooth sine easing
+    float moveX = easeInOutSine(fract((t + phase) * 0.2)) * 2.0 - 1.0;
+    float moveY = easeInOutSine(fract((t * 0.7 + phase) * 0.15)) * 2.0 - 1.0;
+    float moveZ = easeInOutSine(fract((t * 0.3 + phase) * 0.1)) * 2.0 - 1.0;
+
     vec3 offset = vec3(
-      sin(t + phase) * 0.25,           // 3x larger amplitude
-      cos(t * 0.7 + phase) * 0.35,     // More vertical movement
-      sin(t * 0.3 + phase) * 0.15      // 3x depth movement
+      moveX * 0.2,  // Purposeful horizontal glide
+      moveY * 0.25, // Graceful vertical flow
+      moveZ * 0.12  // Subtle depth variation
     );
 
-    // Add secondary flowing motion
-    offset.x += sin(t * 0.4 + basePos.y) * 0.15;
-    offset.y += cos(t * 0.5 + basePos.x) * 0.15;
+    // Subtle breathing idle animation (gentle surface undulation)
+    float breathe = sin(t * 0.5) * 0.03;
+    offset += vec3(breathe, breathe * 0.5, breathe * 0.3);
 
-    // Add scroll velocity stretch
-    offset.y += uScrollVelocity * 0.3;
+    // Smooth scroll influence
+    offset.y += uScrollVelocity * 0.2;
 
     return basePos + offset;
   }
@@ -249,26 +259,30 @@ export const fragmentShader = /* glsl */ `
       vec3 p = ro + rd * d;
       vec3 normal = getNormal(p);
 
-      // Lava color palette (tailwind lava-900 to lava-500)
-      vec3 coreColor = vec3(0.486, 0.176, 0.071);   // #7c2d12
-      vec3 midColor = vec3(0.914, 0.345, 0.047);    // #ea580c
-      vec3 edgeColor = vec3(0.976, 0.451, 0.086);   // #f97316
+      // Flubber Goop color palette (translucent lime-green)
+      vec3 coreColor = vec3(0.4, 0.9, 0.3);      // Deep lime-green core
+      vec3 midColor = vec3(0.6, 1.0, 0.4);       // Bright lime-green
+      vec3 glowColor = vec3(0.8, 1.0, 0.5);      // Yellow-green glow
 
-      // Temperature gradient based on distance and noise
-      float temp = smoothstep(0.0, 1.0, p.z / 3.0);
-      temp += snoise(p * 3.0) * 0.2;
+      // Depth-based color gradient (internal glow)
+      float depth = smoothstep(0.0, 2.0, d);
+      vec3 goopColor = mix(glowColor, coreColor, depth * 0.6);
 
-      vec3 lavaColor = mix(edgeColor, coreColor, clamp(temp, 0.0, 1.0));
+      // Add warm internal glow from depth
+      float innerGlow = smoothstep(1.5, 0.0, d);
+      goopColor += midColor * innerGlow * 0.4;
 
-      // Fresnel effect (edges glow brighter)
-      float fresnel = pow(1.0 - dot(normal, -rd), 3.0);
-      lavaColor += fresnel * edgeColor * 0.4;
+      // Glossy specular highlight (wet, smooth surface)
+      vec3 viewDir = -rd;
+      vec3 halfDir = normalize(viewDir + vec3(0.0, 1.0, 0.5)); // Light from above
+      float specular = pow(max(dot(normal, halfDir), 0.0), 32.0);
+      goopColor += vec3(1.0) * specular * 0.6;
 
-      // Subsurface scattering approximation
-      float thickness = smoothstep(0.0, 2.0, d);
-      lavaColor = mix(lavaColor, midColor, thickness * 0.3);
+      // Subtle Fresnel rim for soft edge glow
+      float fresnel = pow(1.0 - dot(normal, viewDir), 2.5);
+      goopColor += glowColor * fresnel * 0.3;
 
-      // Apply repulsion dimming (lava fades aggressively near content)
+      // Apply repulsion dimming (goop fades aggressively near content)
       vec2 screenPos = uv;
       float repulsion = getRepulsion(screenPos);
 
@@ -276,10 +290,10 @@ export const fragmentShader = /* glsl */ `
       float dimming = smoothstep(4.0, 0.3, repulsion);
       dimming = pow(dimming, 2.0);  // Sharper fade curve
 
-      // Higher base alpha in open areas, completely transparent near text
-      float alpha = 0.5 * dimming;
+      // Translucent goop - higher base alpha for visibility
+      float alpha = 0.65 * dimming;
 
-      color = vec4(lavaColor, alpha);
+      color = vec4(goopColor, alpha);
     }
 
     gl_FragColor = color;

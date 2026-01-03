@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-apple: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-apple-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Colors */
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  --color-muted: #86868b;
+  --color-accent: #f97316;
+  --color-surface: #1d1d1f;
+  --color-border: #424245;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  body {
+    background-color: #000;
+    color: #fff;
+    font-feature-settings: 'ss01' on, 'ss02' on, 'cv01' on;
+  }
+
+  /* Selection styling */
+  ::selection {
+    background: rgba(249, 115, 22, 0.3);
+    color: #fff;
+  }
+  
+  /* Focus styles */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Container with Apple-style max-widths */
+  .container-narrow {
+    @apply mx-auto px-6 max-w-3xl;
+  }
+  
+  .container-default {
+    @apply mx-auto px-6 max-w-5xl;
+  }
+  
+  .container-wide {
+    @apply mx-auto px-6 max-w-7xl;
+  }
+  
+  .container-full {
+    @apply mx-auto px-6 max-w-[1440px];
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-24 md:py-32 lg:py-40;
+  }
+  
+  .section-tight {
+    @apply py-16 md:py-24;
+  }
+
+  /* Text styles */
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
+  }
+  
+  .text-muted {
+    color: var(--color-muted);
+  }
+
+  /* Link hover effect */
+  .link-underline {
+    @apply relative;
+  }
+  
+  .link-underline::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-px bg-current origin-left;
+    transform: scaleX(0);
+    transition: transform 0.3s var(--ease-apple);
+  }
+  
+  .link-underline:hover::after {
+    transform: scaleX(1);
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center px-8 py-4 text-base font-medium rounded-full transition-all duration-300;
+    transition-timing-function: var(--ease-apple);
+  }
+  
+  .btn-primary {
+    @apply btn bg-white text-black;
+  }
+  
+  .btn-primary:hover {
+    @apply bg-white/90;
+  }
+  
+  .btn-secondary {
+    @apply btn border border-white/20 text-white;
+  }
+  
+  .btn-secondary:hover {
+    @apply bg-white/10;
+  }
+  
+  .btn-accent {
+    @apply btn bg-lava-500 text-white;
+  }
+  
+  .btn-accent:hover {
+    @apply bg-lava-600;
+  }
+
+  /* Card surface */
+  .card {
+    @apply bg-[#1d1d1f] rounded-2xl p-8;
+  }
+  
+  .card-hover {
+    @apply card transition-all duration-300;
+    transition-timing-function: var(--ease-apple);
+  }
+  
+  .card-hover:hover {
+    @apply bg-[#2d2d2f];
+  }
+
+  /* Divider */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-white/10 to-transparent;
+  }
+}
+
+@layer utilities {
+  /* Smooth scroll container for Lenis */
+  .smooth-scroll {
+    overflow: hidden;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Grain overlay */
+  .grain {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  }
+
+  /* Text balance for headlines */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Stagger animation delays */
+  .stagger-1 { animation-delay: 0.1s; }
+  .stagger-2 { animation-delay: 0.2s; }
+  .stagger-3 { animation-delay: 0.3s; }
+  .stagger-4 { animation-delay: 0.4s; }
+  .stagger-5 { animation-delay: 0.5s; }
+}

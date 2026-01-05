@@ -175,6 +175,14 @@ export default function Home() {
               </StaggerItem>
             ))}
           </StaggerChildren>
+
+          <FadeIn delay={0.4}>
+            <div className="text-center mt-16 md:mt-20">
+              <p className="text-white/40 italic text-base md:text-lg">
+                "Things have completely changed for the better."
+              </p>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -258,6 +266,17 @@ export default function Home() {
             </FadeIn>
           </div>
         </div>
+
+        {/* One-liner testimonial */}
+        <div className="container-default">
+          <FadeIn delay={0.5}>
+            <div className="text-center mt-16 md:mt-20">
+              <p className="text-white/40 italic text-base md:text-lg">
+                "Allowed us to rethink our client delivery systems and reshape the way our industry works with data."
+              </p>
+            </div>
+          </FadeIn>
+        </div>
       </section>
 
       {/* Work Section */}
@@ -301,22 +320,26 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          {/* Testimonials */}
-          <StaggerChildren className="grid md:grid-cols-3 gap-6 md:gap-8 mt-16 md:mt-24 max-w-6xl mx-auto">
-            {testimonials.map((testimonial, i) => (
-              <StaggerItem key={i}>
-                <div className="bg-white/[0.03] border border-white/5 rounded-2xl p-6 md:p-8 h-full">
-                  <p className="text-white/50 text-sm md:text-base leading-relaxed mb-6">
-                    {testimonial.quote}
-                  </p>
-                  <p className="text-white/70 text-sm font-medium">{testimonial.name}</p>
-                  {testimonial.company && (
-                    <p className="text-white/30 text-xs mt-1">{testimonial.company}</p>
-                  )}
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
+          {/* Highlight Testimonials */}
+          <div className="mt-16 md:mt-20 max-w-4xl mx-auto space-y-12">
+            <FadeIn delay={0.3}>
+              <div className="text-center">
+                <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
+                  "{testimonials[0].quote}"
+                </p>
+                <p className="text-white/40 text-sm">— {testimonials[0].name}</p>
+              </div>
+            </FadeIn>
+
+            <FadeIn delay={0.4}>
+              <div className="text-center">
+                <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
+                  "{testimonials[2].quote}"
+                </p>
+                <p className="text-white/40 text-sm">— {testimonials[2].name}</p>
+              </div>
+            </FadeIn>
+          </div>
         </div>
       </section>
 
@@ -356,6 +379,15 @@ export default function Home() {
             <p className="text-center text-white/30 mt-16 max-w-md mx-auto">
               Good, fast, cheap. Pick two. We optimise for good.
             </p>
+          </FadeIn>
+
+          {/* One-liner testimonial */}
+          <FadeIn delay={0.5}>
+            <div className="text-center mt-16 md:mt-20">
+              <p className="text-white/40 italic text-base md:text-lg">
+                "The perfect partners to tackle our team and data challenges."
+              </p>
+            </div>
           </FadeIn>
         </div>
       </section>

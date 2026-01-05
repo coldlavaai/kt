@@ -16,8 +16,8 @@ export function Footer() {
               className="h-12 w-auto object-contain"
             />
             <div className="text-sm text-white/30">
-              <div>© {new Date().getFullYear()} Cold Lava Ltd. United Kingdom.</div>
-              <div>Company No. [XXXXXXXX]</div>
+              <div>© {new Date().getFullYear()} Cold Lava AI Ltd. United Kingdom.</div>
+              <div>Company No. 16492732</div>
             </div>
           </div>
 

@@ -63,7 +63,7 @@ function LogoTicker({ logos, reverse = false }: { logos: typeof allLogos; revers
                 alt={logo.name}
                 width={140}
                 height={48}
-                className="h-10 w-auto max-w-full object-contain grayscale brightness-200 opacity-70 group-hover:grayscale-0 group-hover:brightness-100 group-hover:opacity-100 transition-all duration-300"
+                className="h-10 w-auto max-w-full object-contain opacity-70 group-hover:opacity-100 transition-all duration-300"
                 unoptimized
               />
             </div>

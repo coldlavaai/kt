@@ -1,4 +1,4 @@
-import { FadeIn, StaggerChildren, StaggerItem } from '@/components'
+import { FadeIn, StaggerChildren, StaggerItem, TechTicker } from '@/components'
 
 const services = [
   {
@@ -326,13 +326,7 @@ export default function Home() {
             </p>
           </FadeIn>
           <FadeIn delay={0.1}>
-            <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10">
-              {techStack.map((tech) => (
-                <span key={tech} className="text-sm text-white/30 font-medium">
-                  {tech}
-                </span>
-              ))}
-            </div>
+            <TechTicker />
           </FadeIn>
         </div>
       </section>

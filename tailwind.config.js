@@ -49,6 +49,7 @@ module.exports = {
         'fade-in': 'fadeIn 0.8s var(--ease-apple) forwards',
         'slide-up': 'slideUp 0.8s var(--ease-apple) forwards',
         'scale-in': 'scaleIn 0.6s var(--ease-apple) forwards',
+        'ticker': 'ticker 30s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -62,6 +63,10 @@ module.exports = {
         scaleIn: {
           '0%': { opacity: '0', transform: 'scale(0.95)' },
           '100%': { opacity: '1', transform: 'scale(1)' },
+        },
+        ticker: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },

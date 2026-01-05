@@ -11,9 +11,9 @@ export function Footer() {
             <Image
               src="/Cold Lava Logo/Cold Lava Logo.png"
               alt="Cold Lava"
-              width={120}
-              height={34}
-              className="h-7 w-auto"
+              width={160}
+              height={48}
+              className="h-10 w-auto object-contain"
             />
             <span className="text-sm text-white/30">
               © {new Date().getFullYear()} Cold Lava Ltd. Liverpool, UK.

@@ -44,9 +44,9 @@ export function Navigation() {
             <Image
               src="/Cold Lava Logo/Cold Lava Logo.png"
               alt="Cold Lava"
-              width={140}
-              height={40}
-              className="h-8 w-auto"
+              width={200}
+              height={60}
+              className="h-12 w-auto"
               priority
             />
           </Link>

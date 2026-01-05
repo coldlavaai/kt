@@ -10,7 +10,6 @@ const allLogos = [
   { name: 'Stripe', path: '/logos/stripe.svg' },
   { name: 'TypeScript', path: '/logos/typescript.svg' },
   { name: 'AWS', path: '/logos/aws.svg' },
-  { name: 'Slack', path: '/logos/slack.png' },
   { name: 'PostgreSQL', path: '/logos/postgresql.svg' },
   { name: 'Twilio', path: '/logos/twilio.svg' },
   { name: 'Google', path: '/logos/google.png' },
@@ -34,7 +33,7 @@ const allLogos = [
   { name: 'Xero', path: '/logos/xero.png' },
   { name: 'Tailwind', path: '/logos/tailwind.svg' },
   { name: 'LinkedIn', path: '/logos/linkedin.png' },
-  { name: 'VAPI', path: '/logos/vapi.png' },
+  { name: 'VAPI', path: '/logos/vapi.svg' },
   { name: 'Cal.com', path: '/logos/cal.svg' },
   { name: 'Airtable', path: '/logos/airtable.png' },
   { name: 'Telegram', path: '/logos/telegram.svg' },
@@ -79,10 +78,18 @@ function LogoTicker({ logos, reverse = false }: { logos: typeof allLogos; revers
 }
 
 export function TechTicker() {
+  // Split logos for continuous carousel effect
+  const midpoint = Math.ceil(allLogos.length / 2)
+  const topLogos = allLogos.slice(0, midpoint)
+  const bottomLogos = allLogos.slice(midpoint)
+
   return (
-    <div className="py-6 space-y-6">
-      {/* Single continuous ticker */}
-      <LogoTicker logos={allLogos} />
+    <div className="py-6 space-y-3">
+      {/* Top ticker - flows left */}
+      <LogoTicker logos={topLogos} />
+
+      {/* Bottom ticker - flows right (reverse) */}
+      <LogoTicker logos={bottomLogos} reverse />
     </div>
   )
 }

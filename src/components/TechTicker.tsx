@@ -3,19 +3,47 @@
 import Image from 'next/image'
 
 const logos = [
-  { name: 'WhatsApp', path: '/logos/whatsapp.svg' },
+  // Frameworks & Languages
+  { name: 'React', path: '/logos/react.svg' },
+  { name: 'Next.js', path: '/logos/nextjs.png' },
+  { name: 'TypeScript', path: '/logos/typescript.svg' },
+  { name: 'Node.js', path: '/logos/nodejs.svg' },
+
+  // Databases
+  { name: 'Supabase', path: '/logos/supabase.svg' },
+  { name: 'PostgreSQL', path: '/logos/postgresql.svg' },
+
+  // AI & Voice
+  { name: 'OpenAI', path: '/logos/openai.svg' },
+  { name: 'Claude', path: '/logos/claude.svg' },
+  { name: 'Anthropic', path: '/logos/anthropic.svg' },
+  { name: 'ElevenLabs', path: '/logos/elevenlabs.svg' },
+  { name: 'Retell AI', path: '/logos/retell.svg' },
+  { name: 'VAPI', path: '/logos/vapi.svg' },
+
+  // Communication
   { name: 'Twilio', path: '/logos/twilio.svg' },
   { name: 'Telegram', path: '/logos/telegram.svg' },
-  { name: 'Tailwind CSS', path: '/logos/tailwind.svg' },
-  { name: 'OpenAI', path: '/logos/openai.svg' },
-  { name: 'ElevenLabs', path: '/logos/elevenlabs.svg' },
-  { name: 'N8n.io', path: '/logos/n8n.svg' },
-  { name: 'Anthropic', path: '/logos/anthropic.svg' },
-  { name: 'Claude', path: '/logos/claude.svg' },
-  { name: 'AWS', path: '/logos/aws.svg' },
-  { name: 'Next.js', path: '/logos/nextjs.png' },
+  { name: 'WhatsApp', path: '/logos/whatsapp.svg' },
+
+  // CMS & E-commerce
+  { name: 'Sanity', path: '/logos/sanity.svg' },
+  { name: 'Shopify', path: '/logos/shopify.svg' },
+  { name: 'WordPress', path: '/logos/wordpress.svg' },
+
+  // Infrastructure & DevOps
   { name: 'Vercel', path: '/logos/vercel.svg' },
+  { name: 'AWS', path: '/logos/aws.svg' },
+  { name: 'Docker', path: '/logos/docker.svg' },
   { name: 'GitHub', path: '/logos/github.png' },
+
+  // Tools & Services
+  { name: 'n8n', path: '/logos/n8n.svg' },
+  { name: 'Google', path: '/logos/google.svg' },
+  { name: 'Stripe', path: '/logos/stripe.svg' },
+  { name: 'Cal.com', path: '/logos/cal.svg' },
+  { name: 'Meta', path: '/logos/meta.svg' },
+  { name: 'Tailwind CSS', path: '/logos/tailwind.svg' },
 ]
 
 export function TechTicker() {

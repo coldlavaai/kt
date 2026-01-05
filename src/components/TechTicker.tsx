@@ -59,8 +59,8 @@ function LogoTicker({ logos }: { logos: Logo[] }) {
         const itemCenterX = rect.left + rect.width / 2
         const distanceFromCenter = Math.abs(centerX - itemCenterX)
 
-        // Spotlight radius - logos within this distance show full color
-        const spotlightRadius = 200
+        // Spotlight radius - narrow so only one logo is lit at a time
+        const spotlightRadius = 80
 
         if (distanceFromCenter < spotlightRadius) {
           item.classList.add('in-spotlight')
@@ -82,7 +82,7 @@ function LogoTicker({ logos }: { logos: Logo[] }) {
       <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
       {/* Spotlight beam indicator (subtle) */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-80 -translate-x-1/2 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent z-0 pointer-events-none" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-32 -translate-x-1/2 bg-gradient-to-r from-transparent via-white/[0.03] to-transparent z-0 pointer-events-none" />
 
       <div
         ref={containerRef}

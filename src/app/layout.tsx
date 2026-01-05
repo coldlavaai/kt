@@ -1,8 +1,13 @@
 import type { Metadata } from 'next'
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
+import { Montserrat } from 'next/font/google'
 import { SmoothScroll, Navigation, Footer } from '@/components'
 import '@/styles/globals.css'
+
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600', '700'],
+  variable: '--font-montserrat',
+})
 
 export const metadata: Metadata = {
   title: 'Cold Lava — Intelligent Business Systems',
@@ -38,7 +43,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+    <html lang="en" className={montserrat.variable}>
       <body className="font-sans antialiased">
         <SmoothScroll>
           <Navigation />

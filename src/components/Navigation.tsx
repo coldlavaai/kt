@@ -35,7 +35,7 @@ export function Navigation() {
       )}
     >
       <nav className="container-full">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="grid grid-cols-3 items-center h-16 md:h-20">
           {/* Logo */}
           <Link
             href="/"
@@ -51,8 +51,8 @@ export function Navigation() {
             />
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          {/* Desktop Navigation - Centered */}
+          <div className="hidden md:flex items-center justify-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -64,8 +64,8 @@ export function Navigation() {
             ))}
           </div>
 
-          {/* CTA */}
-          <div className="hidden md:block">
+          {/* CTA - Right aligned */}
+          <div className="hidden md:flex justify-end">
             <Link
               href="https://cal.com/coldlava/discovery-call"
               target="_blank"

@@ -145,35 +145,6 @@ export default function Home() {
         />
       </section>
 
-      {/* About Section */}
-      <section id="about" className="py-24 md:py-32 border-t border-white/5">
-        <div className="container-narrow text-center">
-          <FadeIn>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-              Who we are
-            </h2>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <p className="text-lg text-white/50 mb-8 leading-relaxed">
-              Cold Lava is a software consultancy based in the United Kingdom. We exist because off-the-shelf tools fail most businesses. AI has finally made custom solutions accessible.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <p className="text-lg text-white/50 mb-8 leading-relaxed">
-              We&apos;re a small team by design. Every project gets direct attention from senior people. No account managers, no handoffs, no juniors learning on your dime.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <p className="text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">
-              Founded by operators who&apos;ve run businesses, felt the pain of bad software, and built Cold Lava to fix it.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
       {/* Services Section */}
       <section id="services" className="py-24 md:py-32 border-t border-white/5">
         <div className="container-default">
@@ -206,7 +177,7 @@ export default function Home() {
           </StaggerChildren>
 
           <FadeIn delay={0.4}>
-            <div className="text-center mt-16 md:mt-20">
+            <div className="text-center mt-16 md:mt-20 max-w-3xl mx-auto">
               <p className="text-white/40 italic text-base md:text-lg leading-relaxed mb-3">
                 "They helped us automate our whole sales process and built us a website that represents the business brilliantly."
               </p>
@@ -286,7 +257,7 @@ export default function Home() {
         {/* One-liner testimonial */}
         <div className="container-default">
           <FadeIn delay={0.5}>
-            <div className="text-center mt-16 md:mt-20">
+            <div className="text-center mt-16 md:mt-20 max-w-4xl mx-auto">
               <p className="text-white/40 italic text-base md:text-lg leading-relaxed mb-3">
                 "Working with Cold Lava has allowed us to rethink our client delivery systems and reshape the way our industry works with data."
               </p>
@@ -350,7 +321,7 @@ export default function Home() {
 
           {/* One-liner testimonial */}
           <FadeIn delay={0.5}>
-            <div className="text-center mt-16 md:mt-20">
+            <div className="text-center mt-16 md:mt-20 max-w-3xl mx-auto">
               <p className="text-white/40 italic text-base md:text-lg leading-relaxed mb-3">
                 "Incredibly efficient, knowledgeable, and easy to work with. Delivered everything on time, and often ahead of schedule."
               </p>
@@ -362,7 +333,7 @@ export default function Home() {
 
       {/* Work Section */}
       <section id="work" className="py-24 md:py-32 border-t border-white/5">
-        <div className="container-default text-center">
+        <div className="container-default">
           <div className="mb-12">
             <FadeIn>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-4">
@@ -370,14 +341,14 @@ export default function Home() {
               </h2>
             </FadeIn>
             <FadeIn delay={0.1}>
-              <p className="text-lg text-white/50 max-w-xl mx-auto">
+              <p className="text-lg text-white/50 max-w-xl">
                 We&apos;ve built systems for vehicle detailing, renewable energy, landscaping, and more.
               </p>
             </FadeIn>
           </div>
 
           <FadeIn delay={0.2}>
-            <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
+            <div className="flex flex-wrap items-center gap-8 md:gap-12">
               <img
                 src="/client-logos/DetailDynamics-Logo.png"
                 alt="Detail Dynamics"
@@ -402,9 +373,9 @@ export default function Home() {
           </FadeIn>
 
           {/* Highlight Testimonials */}
-          <div className="mt-16 md:mt-20 max-w-4xl mx-auto space-y-12">
+          <div className="mt-16 md:mt-20 max-w-3xl space-y-12">
             <FadeIn delay={0.3}>
-              <div className="text-center">
+              <div>
                 <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
                   "{testimonials[0].quote}"
                 </p>
@@ -413,7 +384,7 @@ export default function Home() {
             </FadeIn>
 
             <FadeIn delay={0.4}>
-              <div className="text-center">
+              <div>
                 <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
                   "{testimonials[2].quote}"
                 </p>

@@ -145,6 +145,35 @@ export default function Home() {
         />
       </section>
 
+      {/* About Section */}
+      <section id="about" className="py-24 md:py-32 border-t border-white/5">
+        <div className="container-narrow text-center">
+          <FadeIn>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+              Who we are
+            </h2>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <p className="text-lg text-white/50 mb-8 leading-relaxed">
+              Cold Lava is a software consultancy based in the United Kingdom. We exist because off-the-shelf tools fail most businesses. AI has finally made custom solutions accessible.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <p className="text-lg text-white/50 mb-8 leading-relaxed">
+              We&apos;re a small team by design. Every project gets direct attention from senior people. No account managers, no handoffs, no juniors learning on your dime.
+            </p>
+          </FadeIn>
+
+          <FadeIn delay={0.3}>
+            <p className="text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">
+              Founded by operators who&apos;ve run businesses, felt the pain of bad software, and built Cold Lava to fix it.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="py-24 md:py-32 border-t border-white/5">
         <div className="container-default">
@@ -178,24 +207,11 @@ export default function Home() {
 
           <FadeIn delay={0.4}>
             <div className="text-center mt-16 md:mt-20">
-              <p className="text-white/40 italic text-base md:text-lg">
-                "Things have completely changed for the better."
+              <p className="text-white/40 italic text-base md:text-lg leading-relaxed mb-3">
+                "They helped us automate our whole sales process and built us a website that represents the business brilliantly."
               </p>
+              <p className="text-white/30 text-sm">— Jason Wides</p>
             </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Integrations Ticker */}
-      <section className="py-16 border-t border-white/5">
-        <div className="container-default">
-          <FadeIn>
-            <p className="text-xs text-white/20 mb-6 text-center uppercase tracking-widest">
-              We integrate with the tools you already use
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <IntegrationsTicker />
           </FadeIn>
         </div>
       </section>
@@ -271,9 +287,74 @@ export default function Home() {
         <div className="container-default">
           <FadeIn delay={0.5}>
             <div className="text-center mt-16 md:mt-20">
-              <p className="text-white/40 italic text-base md:text-lg">
-                "Allowed us to rethink our client delivery systems and reshape the way our industry works with data."
+              <p className="text-white/40 italic text-base md:text-lg leading-relaxed mb-3">
+                "Working with Cold Lava has allowed us to rethink our client delivery systems and reshape the way our industry works with data."
               </p>
+              <p className="text-white/30 text-sm">— Harry Bennett, LCB</p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Integrations Ticker */}
+      <section className="py-16 border-t border-white/5">
+        <div className="container-default">
+          <FadeIn>
+            <p className="text-xs text-white/20 mb-6 text-center uppercase tracking-widest">
+              We integrate with the tools you already use
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.1}>
+            <IntegrationsTicker />
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Process Section */}
+      <section className="py-24 md:py-32 border-t border-white/5">
+        <div className="container-default">
+          <div className="max-w-2xl mb-16">
+            <FadeIn>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
+                No surprises. No black boxes.
+              </h2>
+            </FadeIn>
+            <FadeIn delay={0.1}>
+              <p className="text-lg text-white/50 leading-relaxed">
+                Every project follows a clear structure — whether it's a two-week automation or a six-month platform build.
+              </p>
+            </FadeIn>
+          </div>
+
+          <StaggerChildren className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+            {process.map((step, i) => (
+              <StaggerItem key={i}>
+                <div>
+                  <span className="text-4xl md:text-5xl font-semibold text-white/10 block mb-4">
+                    {step.num}
+                  </span>
+                  <h3 className="text-lg font-medium mb-2">{step.title}</h3>
+                  <p className="text-sm text-white/40 leading-relaxed">
+                    {step.description}
+                  </p>
+                </div>
+              </StaggerItem>
+            ))}
+          </StaggerChildren>
+
+          <FadeIn delay={0.4}>
+            <p className="text-center text-white/30 mt-16 max-w-md mx-auto">
+              Good, fast, cheap. Pick two. We optimise for good.
+            </p>
+          </FadeIn>
+
+          {/* One-liner testimonial */}
+          <FadeIn delay={0.5}>
+            <div className="text-center mt-16 md:mt-20">
+              <p className="text-white/40 italic text-base md:text-lg leading-relaxed mb-3">
+                "Incredibly efficient, knowledgeable, and easy to work with. Delivered everything on time, and often ahead of schedule."
+              </p>
+              <p className="text-white/30 text-sm">— Jack Castle</p>
             </div>
           </FadeIn>
         </div>
@@ -340,84 +421,6 @@ export default function Home() {
               </div>
             </FadeIn>
           </div>
-        </div>
-      </section>
-
-      {/* Process Section */}
-      <section className="py-24 md:py-32 border-t border-white/5">
-        <div className="container-default">
-          <div className="max-w-2xl mb-16">
-            <FadeIn>
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-                No surprises. No black boxes.
-              </h2>
-            </FadeIn>
-            <FadeIn delay={0.1}>
-              <p className="text-lg text-white/50 leading-relaxed">
-                Every project follows a clear structure — whether it's a two-week automation or a six-month platform build.
-              </p>
-            </FadeIn>
-          </div>
-
-          <StaggerChildren className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
-            {process.map((step, i) => (
-              <StaggerItem key={i}>
-                <div>
-                  <span className="text-4xl md:text-5xl font-semibold text-white/10 block mb-4">
-                    {step.num}
-                  </span>
-                  <h3 className="text-lg font-medium mb-2">{step.title}</h3>
-                  <p className="text-sm text-white/40 leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
-              </StaggerItem>
-            ))}
-          </StaggerChildren>
-
-          <FadeIn delay={0.4}>
-            <p className="text-center text-white/30 mt-16 max-w-md mx-auto">
-              Good, fast, cheap. Pick two. We optimise for good.
-            </p>
-          </FadeIn>
-
-          {/* One-liner testimonial */}
-          <FadeIn delay={0.5}>
-            <div className="text-center mt-16 md:mt-20">
-              <p className="text-white/40 italic text-base md:text-lg">
-                "The perfect partners to tackle our team and data challenges."
-              </p>
-            </div>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="py-24 md:py-32 border-t border-white/5">
-        <div className="container-narrow text-center">
-          <FadeIn>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight mb-6">
-              Who we are
-            </h2>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <p className="text-lg text-white/50 mb-8 leading-relaxed">
-              Cold Lava is a software consultancy based in the United Kingdom. We exist because off-the-shelf tools fail most businesses. AI has finally made custom solutions accessible.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <p className="text-lg text-white/50 mb-8 leading-relaxed">
-              We&apos;re a small team by design. Every project gets direct attention from senior people. No account managers, no handoffs, no juniors learning on your dime.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.3}>
-            <p className="text-lg text-white/50 leading-relaxed max-w-2xl mx-auto">
-              Founded by operators who&apos;ve run businesses, felt the pain of bad software, and built Cold Lava to fix it.
-            </p>
-          </FadeIn>
         </div>
       </section>
 

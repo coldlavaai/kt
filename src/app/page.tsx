@@ -90,7 +90,7 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-20">
               <a
                 href="https://cal.com/coldlava/discovery-call"
                 target="_blank"
@@ -104,6 +104,13 @@ export default function Home() {
               </a>
             </div>
           </FadeIn>
+
+          <FadeIn delay={0.4}>
+            <p className="text-xs text-white/20 mb-6 uppercase tracking-widest">
+              Modern stack. Serious security. UK-based.
+            </p>
+            <TechTicker />
+          </FadeIn>
         </div>
 
         {/* Subtle gradient orb */}
@@ -113,20 +120,6 @@ export default function Home() {
             background: 'radial-gradient(circle, rgba(249,115,22,0.4) 0%, transparent 70%)',
           }}
         />
-      </section>
-
-      {/* Tech Section */}
-      <section className="py-16 md:py-20 border-t border-white/5">
-        <div className="container-default text-center">
-          <FadeIn>
-            <p className="text-sm text-white/30 mb-8">
-              Modern stack. Serious security. UK-based. GDPR-aware.
-            </p>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <TechTicker />
-          </FadeIn>
-        </div>
       </section>
 
       {/* Proof Band */}

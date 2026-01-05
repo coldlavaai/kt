@@ -164,7 +164,7 @@ export default function Home() {
           <StaggerChildren className="grid md:grid-cols-2 gap-4 md:gap-6">
             {services.map((service, i) => (
               <StaggerItem key={i}>
-                <div className="group bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-2xl p-6 md:p-8 transition-all duration-300 h-full">
+                <div className="group bg-white/[0.03] hover:bg-white/[0.06] border border-white/5 hover:border-white/10 rounded-2xl p-6 md:p-8 transition-all duration-300 h-full text-left">
                   <h3 className="text-lg md:text-xl font-medium mb-3 group-hover:text-white transition-colors">
                     {service.title}
                   </h3>
@@ -214,7 +214,7 @@ export default function Home() {
               </FadeIn>
 
               <FadeIn delay={0.3}>
-                <ul className="space-y-3 mb-10">
+                <ul className="space-y-3 mb-10 text-left">
                   {[
                     'Not another CRM. A complete operating system.',
                     'AI built in from the start, not bolted on.',

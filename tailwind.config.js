@@ -49,7 +49,8 @@ module.exports = {
         'fade-in': 'fadeIn 0.8s var(--ease-apple) forwards',
         'slide-up': 'slideUp 0.8s var(--ease-apple) forwards',
         'scale-in': 'scaleIn 0.6s var(--ease-apple) forwards',
-        'ticker': 'ticker 20s linear infinite',
+        'ticker': 'ticker 15s linear infinite',
+        'ticker-reverse': 'tickerReverse 15s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -67,6 +68,10 @@ module.exports = {
         ticker: {
           '0%': { transform: 'translateX(0)' },
           '100%': { transform: 'translateX(-50%)' },
+        },
+        tickerReverse: {
+          '0%': { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
         },
       },
     },

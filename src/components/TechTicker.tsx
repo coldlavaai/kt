@@ -2,42 +2,34 @@
 
 import Image from 'next/image'
 
-const logos = [
-  // Frameworks & Languages
+// Top ticker - scrolls left
+const topLogos = [
   { name: 'React', path: '/logos/react.svg' },
   { name: 'Next.js', path: '/logos/nextjs.png' },
-  { name: 'TypeScript', path: '/logos/typescript.svg' },
-  { name: 'Node.js', path: '/logos/nodejs.svg' },
-
-  // Databases
-  { name: 'Supabase', path: '/logos/supabase.svg' },
-  { name: 'PostgreSQL', path: '/logos/postgresql.svg' },
-
-  // AI & Voice
+  { name: 'TypeScript', path: '/logos/typescript.png' },
+  { name: 'Node.js', path: '/logos/nodejs.png' },
+  { name: 'Supabase', path: '/logos/supabase.png' },
+  { name: 'PostgreSQL', path: '/logos/postgresql.png' },
   { name: 'OpenAI', path: '/logos/openai.svg' },
   { name: 'Claude', path: '/logos/claude.svg' },
   { name: 'Anthropic', path: '/logos/anthropic.svg' },
   { name: 'ElevenLabs', path: '/logos/elevenlabs.svg' },
   { name: 'Retell AI', path: '/logos/retell.svg' },
   { name: 'VAPI', path: '/logos/vapi.svg' },
-
-  // Communication
   { name: 'Twilio', path: '/logos/twilio.svg' },
   { name: 'Telegram', path: '/logos/telegram.svg' },
-  { name: 'WhatsApp', path: '/logos/whatsapp.svg' },
+]
 
-  // CMS & E-commerce
+// Bottom ticker - scrolls right
+const bottomLogos = [
+  { name: 'WhatsApp', path: '/logos/whatsapp.svg' },
   { name: 'Sanity', path: '/logos/sanity.svg' },
   { name: 'Shopify', path: '/logos/shopify.svg' },
   { name: 'WordPress', path: '/logos/wordpress.svg' },
-
-  // Infrastructure & DevOps
   { name: 'Vercel', path: '/logos/vercel.svg' },
   { name: 'AWS', path: '/logos/aws.svg' },
   { name: 'Docker', path: '/logos/docker.svg' },
   { name: 'GitHub', path: '/logos/github.png' },
-
-  // Tools & Services
   { name: 'n8n', path: '/logos/n8n.svg' },
   { name: 'Google', path: '/logos/google.svg' },
   { name: 'Stripe', path: '/logos/stripe.svg' },
@@ -46,16 +38,16 @@ const logos = [
   { name: 'Tailwind CSS', path: '/logos/tailwind.svg' },
 ]
 
-export function TechTicker() {
+function TickerRow({ logos, reverse = false }: { logos: typeof topLogos; reverse?: boolean }) {
   return (
-    <div className="relative overflow-hidden py-8 group">
-      {/* Gradient overlays for fade effect */}
+    <div className="relative overflow-hidden group">
+      {/* Gradient overlays */}
       <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
       {/* Ticker container */}
-      <div className="flex animate-ticker group-hover:[animation-play-state:paused]">
-        {/* First set of logos */}
+      <div className={`flex ${reverse ? 'animate-ticker-reverse' : 'animate-ticker'} group-hover:[animation-play-state:paused]`}>
+        {/* First set */}
         <div className="flex items-center gap-12 px-6 shrink-0">
           {logos.map((logo, index) => (
             <div
@@ -91,6 +83,18 @@ export function TechTicker() {
           ))}
         </div>
       </div>
+    </div>
+  )
+}
+
+export function TechTicker() {
+  return (
+    <div className="py-4 space-y-4">
+      {/* Top ticker - scrolls left */}
+      <TickerRow logos={topLogos} />
+
+      {/* Bottom ticker - scrolls right */}
+      <TickerRow logos={bottomLogos} reverse />
     </div>
   )
 }

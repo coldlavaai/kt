@@ -96,7 +96,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
-        <div className="container-default text-left max-w-5xl">
+        <div className="container-default text-center max-w-4xl">
           <FadeIn>
             <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/40 mb-6">
               AI consultancy & software development
@@ -116,12 +116,12 @@ export default function Home() {
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <div className="mb-20">
+            <div className="flex justify-center mb-20">
               <a
                 href="https://cal.com/coldlava/discovery-call"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary inline-block"
+                className="btn-primary"
               >
                 Talk to us
               </a>

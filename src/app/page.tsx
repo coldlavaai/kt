@@ -365,25 +365,21 @@ export default function Home() {
             </div>
           </FadeIn>
 
-          {/* Highlight Testimonials */}
-          <div className="mt-16 md:mt-20 max-w-3xl space-y-12">
-            <FadeIn delay={0.3}>
-              <div>
-                <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
-                  "{testimonials[0].quote}"
-                </p>
-                <p className="text-white/40 text-sm">— {testimonials[0].name}</p>
-              </div>
-            </FadeIn>
-
-            <FadeIn delay={0.4}>
-              <div>
-                <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
-                  "{testimonials[2].quote}"
-                </p>
-                <p className="text-white/40 text-sm">— {testimonials[2].name}</p>
-              </div>
-            </FadeIn>
+          {/* All Testimonials */}
+          <div className="mt-16 md:mt-20 max-w-3xl mx-auto space-y-12">
+            {testimonials.map((testimonial, i) => (
+              <FadeIn key={i} delay={0.3 + i * 0.1}>
+                <div className="text-center">
+                  <p className="text-lg md:text-xl text-white/60 italic leading-relaxed mb-4">
+                    "{testimonial.quote}"
+                  </p>
+                  <p className="text-white/40 text-sm">
+                    — {testimonial.name}
+                    {testimonial.company && `, ${testimonial.company}`}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>

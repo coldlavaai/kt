@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useEffect, useRef } from 'react'
 
 // Tech Stack - Engineering credibility logos
 const techStackLogos = [
@@ -42,8 +43,37 @@ const integrationsLogos = [
 type Logo = { name: string; path: string }
 
 function LogoTicker({ logos }: { logos: Logo[] }) {
-  // Triple for smooth infinite
+  const containerRef = useRef<HTMLDivElement>(null)
   const repeatedLogos = [...logos, ...logos, ...logos]
+
+  useEffect(() => {
+    const container = containerRef.current
+    if (!container) return
+
+    const updateSpotlight = () => {
+      const items = container.querySelectorAll('[data-logo-item]')
+      const centerX = window.innerWidth / 2
+
+      items.forEach((item) => {
+        const rect = item.getBoundingClientRect()
+        const itemCenterX = rect.left + rect.width / 2
+        const distanceFromCenter = Math.abs(centerX - itemCenterX)
+
+        // Spotlight radius - logos within this distance show full color
+        const spotlightRadius = 200
+
+        if (distanceFromCenter < spotlightRadius) {
+          item.classList.add('in-spotlight')
+        } else {
+          item.classList.remove('in-spotlight')
+        }
+      })
+    }
+
+    // Update continuously as ticker animates
+    const interval = setInterval(updateSpotlight, 50)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className="relative overflow-hidden">
@@ -51,14 +81,19 @@ function LogoTicker({ logos }: { logos: Logo[] }) {
       <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
       <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
 
+      {/* Spotlight beam indicator (subtle) */}
+      <div className="absolute left-1/2 top-0 bottom-0 w-80 -translate-x-1/2 bg-gradient-to-r from-transparent via-white/[0.02] to-transparent z-0 pointer-events-none" />
+
       <div
-        className="flex items-center animate-ticker"
+        ref={containerRef}
+        className="flex items-center animate-ticker relative z-[1]"
         style={{ width: 'max-content' }}
       >
         {repeatedLogos.map((logo, index) => (
           <div
             key={index}
-            className="flex-shrink-0 px-8 md:px-10 group"
+            data-logo-item
+            className="flex-shrink-0 px-8 md:px-10"
           >
             <div className="h-12 w-32 flex items-center justify-center">
               <Image
@@ -66,7 +101,7 @@ function LogoTicker({ logos }: { logos: Logo[] }) {
                 alt={logo.name}
                 width={140}
                 height={48}
-                className="h-10 w-auto max-w-full object-contain opacity-60 grayscale group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-300"
+                className="logo-img h-10 w-auto max-w-full object-contain opacity-60 grayscale transition-all duration-500"
                 unoptimized
               />
             </div>

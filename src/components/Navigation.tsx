@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
@@ -38,9 +39,16 @@ export function Navigation() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight hover:opacity-70 transition-opacity"
+            className="hover:opacity-70 transition-opacity"
           >
-            Cold Lava
+            <Image
+              src="/Cold Lava Logo/Cold Lava Logo.png"
+              alt="Cold Lava"
+              width={140}
+              height={40}
+              className="h-8 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

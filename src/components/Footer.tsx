@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 
 export function Footer() {
   return (
@@ -6,8 +7,14 @@ export function Footer() {
       <div className="container-full py-12 md:py-16">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
           {/* Logo & Copyright */}
-          <div className="flex flex-col gap-2">
-            <span className="text-lg font-semibold">Cold Lava</span>
+          <div className="flex flex-col gap-3">
+            <Image
+              src="/Cold Lava Logo/Cold Lava Logo.png"
+              alt="Cold Lava"
+              width={120}
+              height={34}
+              className="h-7 w-auto"
+            />
             <span className="text-sm text-white/30">
               © {new Date().getFullYear()} Cold Lava Ltd. Liverpool, UK.
             </span>

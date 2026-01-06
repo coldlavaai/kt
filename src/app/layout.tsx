@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { Montserrat } from 'next/font/google'
-import { SmoothScroll, Navigation, Footer, CookieBanner } from '@/components'
+import { SmoothScroll, Navigation, Footer, CookieBanner, StickyCTA } from '@/components'
 import { ConsoleEasterEgg } from '@/components/ConsoleEasterEgg'
 import { DynamicFavicon } from '@/components/DynamicFavicon'
 import { OrganizationSchema, LocalBusinessSchema, ServiceSchema, WebsiteSchema } from '@/components/StructuredData'
@@ -107,6 +107,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <CookieBanner />
+          <StickyCTA />
           <div className="grain" aria-hidden="true" />
         </SmoothScroll>
       </body>

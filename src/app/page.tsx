@@ -727,24 +727,24 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <div className="inline-block px-3 py-1 border border-cyan-500/30 bg-cyan-500/5 mb-8">
-                <span className="font-mono text-xs text-cyan-500 uppercase tracking-wider">
+              <div className="inline-block px-3 py-1 border border-cyan-500/30 bg-cyan-500/5 mb-6 md:mb-8">
+                <span className="font-mono text-[10px] md:text-xs text-cyan-500 uppercase tracking-wider">
                   Flagship Product
                 </span>
               </div>
 
-              <h2 className="text-6xl md:text-8xl font-bold mb-4 tracking-tight">
+              <h2 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-3 md:mb-4 tracking-tight">
                 BOS
               </h2>
-              <p className="text-3xl text-white/40 mb-8 font-light">
+              <p className="text-2xl md:text-3xl text-white/40 mb-6 md:mb-8 font-light">
                 Business Operating System
               </p>
 
-              <p className="text-xl text-white/60 mb-10 leading-relaxed max-w-xl">
+              <p className="text-base md:text-lg lg:text-xl text-white/60 mb-8 md:mb-10 leading-relaxed max-w-xl">
                 Stop bending your business to fit off the shelf software. BOS is built around you, like an <span className="text-cyan-500">exoskeleton</span>. Custom fitted to your processes, not some San Francisco tech team's idea of how you should work.
               </p>
 
-              <ul className="space-y-4 mb-12">
+              <ul className="space-y-3 md:space-y-4 mb-10 md:mb-12">
                 {[
                   'Built from the ground up for your business, not configured.',
                   'Manages your entire operation, not just customers.',
@@ -955,27 +955,27 @@ export default function Home() {
 
 
       {/* CONTACT - Split */}
-      <section id="contact" className="py-32 border-t border-white/5 relative">
+      <section id="contact" className="py-16 md:py-24 lg:py-32 border-t border-white/5 relative">
         <GridOverlay spacing={32} opacity={0.015} />
 
         <div className="container-default relative">
-          <div className="grid md:grid-cols-2 gap-20">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-16 lg:gap-20">
             <div>
-              <p className="font-mono text-xs uppercase tracking-wider text-white/30 mb-4">
+              <p className="font-mono text-[10px] md:text-xs uppercase tracking-wider text-white/30 mb-3 md:mb-4">
                 Contact
               </p>
-              <h2 className="text-5xl md:text-7xl font-bold mb-8">
+              <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8">
                 Let's <span className="text-cyan-500">talk</span>
               </h2>
-              <p className="text-xl text-white/50 mb-6">
+              <p className="text-lg md:text-xl text-white/50 mb-4 md:mb-6 leading-relaxed">
                 Ready to build something? Book a discovery call or send us a message.
               </p>
-              <p className="text-white/40">
+              <p className="text-sm md:text-base text-white/40">
                 No pitch decks, no pressure.
               </p>
             </div>
 
-            <div className="flex flex-col justify-center gap-6">
+            <div className="flex flex-col justify-center gap-5 md:gap-6">
               <a
                 href="https://cal.com/coldlava/discovery-call"
                 target="_blank"

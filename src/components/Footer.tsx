@@ -54,6 +54,25 @@ export function Footer() {
           </div>
         </div>
       </div>
+
+      {/* Legal Links Row */}
+      <div className="border-t border-white/5">
+        <div className="container-full py-3">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-xs text-white/30">
+            <Link href="/privacy" className="hover:text-cyan-400 transition-colors">
+              Privacy Policy
+            </Link>
+            <span className="text-white/10">·</span>
+            <Link href="/terms" className="hover:text-cyan-400 transition-colors">
+              Terms of Service
+            </Link>
+            <span className="text-white/10">·</span>
+            <Link href="/cookies" className="hover:text-cyan-400 transition-colors">
+              Cookie Policy
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   )
 }

@@ -90,30 +90,31 @@ export function ProcessSection() {
       }} />
 
       <div className="container-default relative">
+        {/* Section Header - Full Width */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <div className="flex items-center gap-4 mb-4">
+            <div className="h-px w-12 bg-cyan-500/40" />
+            <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
+              Process / Methodology
+            </p>
+          </div>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+            No surprises.
+            <br />
+            No black boxes.
+          </h2>
+        </motion.div>
+
         {/* Two-column layout */}
         <div className="grid lg:grid-cols-[35%_65%] gap-16 items-start">
-          {/* Left Column - Header & Philosophy */}
+          {/* Left Column - Philosophy & Priorities */}
           <div className="space-y-12">
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <div className="flex items-center gap-4 mb-4">
-                <div className="h-px w-12 bg-cyan-500/40" />
-                <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
-                  Process / Methodology
-                </p>
-              </div>
-              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-                No surprises.
-                <br />
-                No black boxes.
-              </h2>
-            </motion.div>
-
             {/* Philosophy Box */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -136,7 +137,7 @@ export function ProcessSection() {
               <div className="absolute bottom-0 right-0 w-5 h-5 border-r-2 border-b-2 border-cyan-500/20" />
 
               <p className="font-mono text-sm md:text-base text-white/50 leading-relaxed">
-                Good, fast, cheap. Pick two. We optimise for <span className="text-cyan-500/80">good</span>.
+                Good, fast, cheap. You can only pick two. We optimise for <span className="text-cyan-500/80">good</span>.
               </p>
 
               {/* Dimension markers */}
@@ -151,6 +152,68 @@ export function ProcessSection() {
                 <div className="w-px h-4 bg-cyan-500/20" />
               </div>
             </motion.div>
+
+            {/* Development Priorities */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
+            >
+              {/* Label with architectural line */}
+              <div className="flex items-center gap-3 mb-6">
+                <div className="h-px w-6 bg-cyan-500/20" />
+                <span className="font-mono text-[9px] text-cyan-500/40 uppercase tracking-wider">
+                  Development Priorities
+                </span>
+                <div className="h-px flex-1 bg-white/5" />
+              </div>
+
+              {/* Priorities Grid */}
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3">
+                {[
+                  'Security First',
+                  'Code Ownership',
+                  'Transparent Pricing',
+                  'GDPR Compliant',
+                  'Full Transparency',
+                  'No Vendor Lock-in',
+                  'Documentation Included',
+                  'Source Control',
+                ].map((priority, idx) => (
+                  <motion.div
+                    key={priority}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: 0.5 + idx * 0.05 }}
+                    className="flex items-center gap-2 group"
+                  >
+                    {/* Technical marker */}
+                    <div className="flex items-center gap-1">
+                      <div className="w-1 h-1 bg-cyan-500/30 rounded-full" />
+                      <div className="w-2 h-px bg-cyan-500/20" />
+                    </div>
+
+                    {/* Priority text */}
+                    <span className="font-mono text-[10px] text-white/40 group-hover:text-white/50 uppercase tracking-wider transition-colors">
+                      {priority}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+
+              {/* Bottom technical annotation */}
+              <div className="mt-6 pt-4 border-t border-white/5">
+                <div className="flex items-center gap-2">
+                  <div className="w-1.5 h-1.5 border border-cyan-500/30 rotate-45" />
+                  <span className="font-mono text-[8px] text-white/20 uppercase tracking-wider">
+                    System Parameters / Non-Negotiable
+                  </span>
+                </div>
+              </div>
+            </motion.div>
           </div>
 
           {/* Right Column - Wave Animation */}
@@ -158,7 +221,7 @@ export function ProcessSection() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            transition={{ duration: 0.8 }}
             className="relative hidden lg:block"
           >
             {/* Stage cards positioned along wave */}

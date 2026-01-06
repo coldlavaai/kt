@@ -71,34 +71,23 @@ export function WaveOrb({ isAnimating = false }: WaveOrbProps) {
           filter="url(#waveGlow)"
         />
 
-        {/* The traveling orb group */}
-        <g>
-          {/* Outer glow circle */}
-          <circle
-            r="8"
-            fill="#06b6d4"
-            filter="url(#orbGlow)"
-          >
-            <animate
-              attributeName="r"
-              values="8;10;8"
-              dur="1s"
-              repeatCount="indefinite"
-            />
-          </circle>
-
-          {/* Inner bright core */}
-          <circle
-            r="4"
-            fill="#ffffff"
-            opacity="0.9"
+        {/* The traveling logo group */}
+        <g transform="translate(-12, -12)">
+          {/* Cold Lava Logo */}
+          <image
+            href="/Cold Lava Logo/Cold Lava - Icon.png"
+            x="0"
+            y="0"
+            width="24"
+            height="24"
+            opacity="1"
           />
 
-          {/* Animate motion along the path */}
+          {/* Animate motion along the path with auto-rotation for physics */}
           <animateMotion
             dur="12s"
             repeatCount="indefinite"
-            rotate="0"
+            rotate="auto"
           >
             <mpath href={`#${pathId}`} />
           </animateMotion>

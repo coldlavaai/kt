@@ -586,7 +586,7 @@ export default function Home() {
         {/* Technical Annotations */}
         <TechnicalLabel position="top-right">v2.0.26</TechnicalLabel>
         <TechnicalLabel position="bottom-left">EST. 2024</TechnicalLabel>
-        <TechnicalLabel position="bottom-right">Liverpool, UK</TechnicalLabel>
+        <TechnicalLabel position="bottom-right">United Kingdom</TechnicalLabel>
 
         {/* Subtle glow */}
         <div className="absolute top-1/4 -left-1/4 w-[800px] h-[800px] bg-cyan-500/5 rounded-full blur-3xl" />

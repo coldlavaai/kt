@@ -43,26 +43,26 @@ export function MouseCoordinates() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed top-6 left-6 z-50 pointer-events-none select-none"
+          className="fixed top-6 left-6 z-50 select-none"
         >
           <div className="flex items-center gap-4">
             {/* Logo */}
-            <div className="relative">
+            <a href="#" className="relative pointer-events-auto group cursor-pointer">
               <Image
                 src="/Cold Lava Logo/Cold Lava - Icon.png"
                 alt="Cold Lava"
                 width={48}
                 height={48}
-                className="h-12 w-auto opacity-90"
+                className="h-12 w-auto opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                 priority
               />
-            </div>
+            </a>
 
             {/* Separator line */}
-            <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent" />
+            <div className="h-12 w-px bg-gradient-to-b from-transparent via-cyan-500/30 to-transparent pointer-events-none" />
 
             {/* Coordinates */}
-            <div className="relative">
+            <div className="relative pointer-events-none">
               {/* Corner bracket */}
               <div className="absolute -top-1 -left-1 w-3 h-3 border-l border-t border-cyan-500/30" />
 

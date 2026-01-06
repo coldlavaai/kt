@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { HeaderClock } from './HeaderClock'
@@ -40,18 +39,7 @@ export function Navigation() {
       <HeaderClock />
 
       <nav className="container-full">
-        <div className="flex items-center justify-between h-16 md:h-20">
-          {/* Logo - Left aligned */}
-          <Link href="#" className="relative z-10 group">
-            <Image
-              src="/Cold Lava Logo/Cold Lava - Icon.png"
-              alt="Cold Lava"
-              width={40}
-              height={40}
-              className="transition-opacity duration-300 group-hover:opacity-80"
-            />
-          </Link>
-
+        <div className="flex items-center justify-end h-16 md:h-20">
           {/* Desktop Navigation - Right aligned */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (

@@ -18,10 +18,10 @@ const services = [
       'Real-time reporting'
     ],
     solutions: [
-      'CRM that matches your sales process',
-      'Job tracking for trades businesses',
-      'Client portals with real-time updates',
-      'Custom reporting dashboards'
+      'Stop losing leads in email chains and spreadsheets',
+      'See your entire business in one place, not ten tabs',
+      'Give clients visibility without chasing updates',
+      'Scale operations without hiring another admin'
     ],
     featured: true
   },

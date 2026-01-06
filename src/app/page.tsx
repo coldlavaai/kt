@@ -552,7 +552,7 @@ const testimonials = [
   },
   {
     quote: 'Incredibly efficient, knowledgeable, and easy to work with. Delivered everything on time, and often ahead of schedule. The end result far exceeded our expectations.',
-    author: 'Jack Castle',
+    author: 'Sian',
     company: '',
   },
 ]
@@ -571,7 +571,6 @@ export default function Home() {
         <GridOverlay spacing={32} opacity={0.015} />
 
         {/* Technical Annotations */}
-        <TechnicalLabel position="top-right">v2.0.26</TechnicalLabel>
         <TechnicalLabel position="bottom-left">EST. 2024</TechnicalLabel>
         <TechnicalLabel position="bottom-right">United Kingdom</TechnicalLabel>
 
@@ -995,7 +994,7 @@ export default function Home() {
               </p>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Working with ColdLava
+              Working with Cold Lava
             </h2>
           </div>
 
@@ -1025,7 +1024,7 @@ export default function Home() {
                   className={`group relative ${layouts[i]} h-full`}
                 >
                   {/* Architectural frame */}
-                  <div className="relative h-full bg-white/[0.01] border border-white/5 p-6 md:p-7 hover:border-cyan-500/20 transition-all duration-700">
+                  <div className="relative h-full bg-white/[0.01] border border-white/5 p-6 md:p-7 hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-700">
                     {/* Corner brackets */}
                     <div className="absolute top-0 left-0 w-6 h-6 border-l border-t border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute top-0 right-0 w-6 h-6 border-r border-t border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

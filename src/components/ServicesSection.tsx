@@ -323,13 +323,13 @@ export function ServicesSection() {
                 {/* Solutions */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-px bg-green-500/30" />
-                    <span className="font-mono text-[8px] text-green-500/40 uppercase tracking-wider">Solutions</span>
+                    <div className="w-6 h-px bg-[#C9A962]/30" />
+                    <span className="font-mono text-[8px] text-[#C9A962]/60 uppercase tracking-wider">Solutions</span>
                   </div>
                   <div className="space-y-2">
                     {services[3].solutions.map((solution, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-white/50">
-                        <div className="w-1 h-1 bg-green-500/40 rounded-full mt-1.5 flex-shrink-0" />
+                        <div className="w-1 h-1 bg-[#C9A962]/50 rounded-full mt-1.5 flex-shrink-0" />
                         <span className="leading-relaxed">{solution}</span>
                       </div>
                     ))}
@@ -509,13 +509,13 @@ export function ServicesSection() {
                 {/* Solutions */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
-                    <div className="w-6 h-px bg-green-500/30" />
-                    <span className="font-mono text-[8px] text-green-500/40 uppercase tracking-wider">Solutions</span>
+                    <div className="w-6 h-px bg-[#C9A962]/30" />
+                    <span className="font-mono text-[8px] text-[#C9A962]/60 uppercase tracking-wider">Solutions</span>
                   </div>
                   <div className="space-y-2">
                     {services[2].solutions.map((solution, idx) => (
                       <div key={idx} className="flex items-start gap-2 text-xs text-white/50">
-                        <div className="w-1 h-1 bg-green-500/40 rounded-full mt-1.5 flex-shrink-0" />
+                        <div className="w-1 h-1 bg-[#C9A962]/50 rounded-full mt-1.5 flex-shrink-0" />
                         <span className="leading-relaxed">{solution}</span>
                       </div>
                     ))}

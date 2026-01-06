@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
+import { HeaderClock } from './HeaderClock'
 
 const navItems = [
   { label: 'Work', href: '#work' },
@@ -34,6 +35,9 @@ export function Navigation() {
           : 'bg-transparent'
       )}
     >
+      {/* Header Clock */}
+      <HeaderClock />
+
       <nav className="container-full">
         <div className="flex items-center justify-end h-16 md:h-20">
           {/* Desktop Navigation - Right aligned */}
@@ -42,9 +46,10 @@ export function Navigation() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-sm text-white/60 hover:text-white transition-colors duration-300"
+                className="relative text-sm text-white/60 hover:text-white transition-colors duration-300 group"
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-cyan-400 transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </div>

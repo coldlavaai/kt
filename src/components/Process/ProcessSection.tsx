@@ -14,43 +14,25 @@ const processStages = [
 
 export function ProcessSection() {
   const [activeStage, setActiveStage] = useState<number>(0)
-  const [isAnimating, setIsAnimating] = useState(false)
   const [startTime, setStartTime] = useState<number>(0)
   const sectionRef = useRef<HTMLElement>(null)
 
-  // Start animation when section is visible
+  // Start animation immediately on mount
   useEffect(() => {
-    if (!sectionRef.current) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !isAnimating) {
-            // Start animation
-            setIsAnimating(true)
-            setStartTime(Date.now())
-          }
-        })
-      },
-      { threshold: 0.3 } // Start when 30% visible
-    )
-
-    observer.observe(sectionRef.current)
-
-    return () => observer.disconnect()
-  }, [isAnimating])
+    setStartTime(Date.now())
+  }, [])
 
   // Update active stage based on timer
   // Stages positioned at: 12%, 37%, 62%, 87% along the path
   // With 12s total duration, that's: 1.44s, 4.44s, 7.44s, 10.44s
   useEffect(() => {
-    if (!isAnimating || !startTime) return
+    if (!startTime) return
 
     const totalDuration = 12000 // 12 seconds total
 
-    // Stage timing based on orb position along path (delayed 500ms to sync with orb)
+    // Stage timing based on orb position along path (starts immediately)
     const stageTimes = [
-      { start: 500, end: 3500 },    // Diagnose: 0.5-3.5s
+      { start: 0, end: 3000 },      // Diagnose: 0-3s
       { start: 3000, end: 6000 },   // Design: 3-6s
       { start: 6000, end: 9000 },   // Build: 6-9s
       { start: 9000, end: 12000 },  // Support: 9-12s
@@ -79,7 +61,7 @@ export function ProcessSection() {
     const interval = setInterval(updateStage, 100)
 
     return () => clearInterval(interval)
-  }, [isAnimating, startTime, activeStage])
+  }, [startTime, activeStage])
 
   return (
     <section ref={sectionRef} className="py-32 border-t border-white/5 relative overflow-hidden">
@@ -252,7 +234,7 @@ export function ProcessSection() {
 
                 {/* Wave with orb - behind cards */}
                 <div className="relative z-0">
-                  <WaveOrb isAnimating={isAnimating} />
+                  <WaveOrb isAnimating={true} />
                 </div>
 
                 {/* Bottom row cards */}

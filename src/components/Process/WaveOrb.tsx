@@ -30,7 +30,6 @@ export function WaveOrb({ isAnimating = false }: WaveOrbProps) {
   return (
     <div className="relative w-full h-[300px] flex items-center justify-center">
       <svg
-        key="animated-orb"
         viewBox="0 0 800 300"
         className="w-full h-full"
         preserveAspectRatio="xMidYMid meet"

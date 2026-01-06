@@ -472,10 +472,9 @@ function ProcessCard({
   )
 }
 
-// Floating Trust Badges - Technical Coordinate Aesthetic
-function FloatingTrustBadges() {
-  // All trust messages that will cycle through
-  const allMessages = [
+// Trust Principles Stack - Right Side
+function TrustPrinciplesStack() {
+  const principles = [
     'GDPR Compliant',
     'Code Ownership',
     'Full Transparency',
@@ -484,61 +483,49 @@ function FloatingTrustBadges() {
     'No Vendor Lock-in',
     'Security First',
     'Cloud-Native',
-    'Regular Updates',
-    'Ongoing Support',
-  ]
-
-  // Fixed positions well outside the diagram (4 positions only)
-  const positions = [
-    { pos: 'top-[5%] left-[8%]', messages: [0, 4, 8] },     // Top-left
-    { pos: 'top-[8%] right-[10%]', messages: [1, 5, 9] },   // Top-right
-    { pos: 'bottom-[8%] left-[12%]', messages: [2, 6] },    // Bottom-left
-    { pos: 'bottom-[5%] right-[8%]', messages: [3, 7] },    // Bottom-right
   ]
 
   return (
-    <>
-      {positions.map((location, idx) => (
-        <div key={idx} className={`absolute ${location.pos} hidden xl:block pointer-events-none z-20`}>
-          {location.messages.map((msgIdx, i) => (
-            <motion.div
-              key={msgIdx}
-              initial={{ opacity: 0 }}
-              animate={{
-                opacity: [0, 0, 0.4, 0.4, 0],
-              }}
-              transition={{
-                duration: 6,
-                delay: i * 6, // Each message in this position waits for previous to finish
-                repeat: Infinity,
-                repeatDelay: (location.messages.length - 1) * 6, // Wait for other messages
-                ease: 'easeInOut',
-              }}
-              className="absolute top-0 left-0"
-            >
-              <div className="flex items-center gap-2">
-                {/* Coordinate bracket */}
-                <span className="text-white/20 font-mono text-[10px]">[</span>
+    <motion.div
+      initial={{ opacity: 0, x: 20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6, delay: 0.4 }}
+      className="absolute right-0 top-1/2 -translate-y-1/2 hidden xl:block"
+    >
+      {/* Subheading */}
+      <div className="mb-4 flex items-center gap-2">
+        <div className="w-6 h-px bg-cyan-500/20" />
+        <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-white/20">
+          We believe
+        </p>
+      </div>
 
-                {/* Dot indicator */}
-                <div className="w-1 h-1 bg-cyan-500/40 rounded-full" />
+      {/* Stacked principles */}
+      <div className="space-y-2">
+        {principles.map((principle, idx) => (
+          <motion.div
+            key={idx}
+            initial={{ opacity: 0, x: 10 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.5 + idx * 0.05 }}
+            className="flex items-center gap-2 group"
+          >
+            {/* Dot indicator */}
+            <div className="w-1 h-1 bg-cyan-500/40 rounded-full group-hover:bg-cyan-500/60 transition-colors" />
 
-                {/* Trust message */}
-                <span className="font-mono text-[10px] text-white/30 uppercase tracking-wider whitespace-nowrap">
-                  {allMessages[msgIdx]}
-                </span>
+            {/* Principle text */}
+            <span className="font-mono text-[10px] text-white/30 group-hover:text-white/40 uppercase tracking-wider whitespace-nowrap transition-colors">
+              {principle}
+            </span>
 
-                {/* Closing bracket */}
-                <span className="text-white/20 font-mono text-[10px]">]</span>
-
-                {/* Technical line decoration */}
-                <div className="w-4 h-px bg-gradient-to-r from-white/10 to-transparent" />
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      ))}
-    </>
+            {/* Technical line decoration */}
+            <div className="w-3 h-px bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   )
 }
 
@@ -814,8 +801,8 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="relative mx-auto"
           >
-            {/* Floating trust badges around diagram */}
-            <FloatingTrustBadges />
+            {/* Trust principles stack - right side */}
+            <TrustPrinciplesStack />
 
             <ProcessOrbit />
 
@@ -1002,15 +989,15 @@ export default function Home() {
               </p>
 
               <p className="text-xl text-white/60 mb-10 leading-relaxed max-w-xl">
-                Stop bending your business to fit off-the-shelf software. BOS is built around you—like an exoskeleton. Custom-fitted to your processes, not some San Francisco tech team's idea of how you should work.
+                Stop bending your business to fit off the shelf software. BOS is built around you, like an exoskeleton. Custom fitted to your processes, not some San Francisco tech team's idea of how you should work.
               </p>
 
               <ul className="space-y-4 mb-12">
                 {[
-                  'Built from the ground up for your business. Not configured, built.',
-                  'Manages your entire operation. Not just customers.',
-                  'Does exactly what you need. Nothing you don\'t.',
-                  'One integrated system. Not twelve apps held together with duct tape.',
+                  'Built from the ground up for your business, not configured.',
+                  'Manages your entire operation, not just customers.',
+                  'Does exactly what you need and nothing you don't.',
+                  'One integrated system instead of twelve apps held together with duct tape.',
                 ].map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <span className="text-cyan-500 mt-1">→</span>

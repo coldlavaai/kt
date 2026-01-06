@@ -7,46 +7,82 @@ const services = [
   {
     num: '01',
     title: 'Business systems built to spec',
+    problem: 'Off-the-shelf software forces you to adapt your workflows. Spreadsheets break at scale.',
     description: 'Dashboards, platforms, internal tools and full-scale business operating systems designed around your workflows.',
     details: [
       'Custom dashboards and analytics',
       'Client portals and management systems',
       'Internal automation platforms',
-      'Database design and migration'
+      'Database design and migration',
+      'Multi-user access control',
+      'Real-time reporting'
+    ],
+    solutions: [
+      'CRM that matches your sales process',
+      'Job tracking for trades businesses',
+      'Client portals with real-time updates',
+      'Custom reporting dashboards'
     ],
     featured: true
   },
   {
     num: '02',
     title: 'Voice and chat agents that work 24/7',
-    description: 'Custom AI that handles calls, qualifies leads, and books appointments.',
+    problem: 'Missed calls = lost revenue. Your team can\'t answer every lead instantly.',
+    description: 'Custom AI that handles inbound and outbound calls, qualifies leads, and books appointments while you sleep.',
     details: [
       'Inbound call handling',
+      'Outbound calling campaigns',
       'Lead qualification and routing',
       'Appointment scheduling',
-      'Multi-language support'
+      'Multi-language support',
+      'CRM integration'
+    ],
+    solutions: [
+      'Never miss an inbound lead again',
+      'Qualify prospects before they hit your calendar',
+      'Follow up on dead leads automatically',
+      'Book appointments 24/7'
     ]
   },
   {
     num: '03',
     title: 'Workflows that run without you',
-    description: 'Connect systems, eliminate manual tasks, and build processes that scale.',
+    problem: 'Your team wastes hours on copy-paste between systems. Data gets lost in the gaps.',
+    description: 'Connect systems, eliminate manual tasks, and build processes that scale without adding headcount.',
     details: [
       'API integrations',
       'Data synchronization',
       'Email and SMS automation',
-      'Document generation'
+      'Document generation',
+      'Payment processing',
+      'Notification systems'
+    ],
+    solutions: [
+      'Sync leads from ads to CRM instantly',
+      'Auto-generate quotes and invoices',
+      'Send follow-up sequences automatically',
+      'Update records across all platforms'
     ]
   },
   {
     num: '04',
     title: 'AI strategy without the jargon',
-    description: 'Assess operations, identify opportunities, and build executable roadmaps.',
+    problem: 'You know AI could help, but don\'t know where to start or what\'s actually possible.',
+    description: 'Assess operations, identify opportunities, and build executable roadmaps. No buzzwords, just ROI.',
     details: [
       'Process audit and mapping',
       'ROI analysis and forecasting',
       'Technology selection',
-      'Implementation planning'
+      'Implementation planning',
+      'Team training',
+      'Ongoing optimization'
+    ],
+    solutions: [
+      'Identify high-impact automation opportunities',
+      'Build phased implementation roadmap',
+      'Select the right tools for your budget',
+      'Train your team on new systems'
     ]
   },
 ]
@@ -148,6 +184,12 @@ export function ServicesSection() {
                 {services[0].title}
               </h3>
 
+              {/* Problem statement */}
+              <div className="mb-6 p-4 border-l-2 border-cyan-500/30 bg-cyan-500/5">
+                <span className="font-mono text-[8px] text-cyan-500/60 uppercase tracking-wider block mb-2">Problem</span>
+                <p className="text-white/70 text-sm leading-relaxed">{services[0].problem}</p>
+              </div>
+
               <p className="text-white/60 mb-8 leading-relaxed text-lg">
                 {services[0].description}
               </p>
@@ -174,6 +216,23 @@ export function ServicesSection() {
                     <span className="leading-relaxed">{detail}</span>
                   </motion.div>
                 ))}
+              </div>
+
+              {/* Solutions section */}
+              <div className="mb-8">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-px bg-green-500/40" />
+                  <span className="font-mono text-[9px] text-green-500/40 uppercase tracking-wider">Solutions</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-green-500/20 to-transparent" />
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  {services[0].solutions.map((solution, idx) => (
+                    <div key={idx} className="flex items-start gap-2 text-sm text-white/50">
+                      <div className="w-1 h-1 bg-green-500/40 rounded-full mt-2 flex-shrink-0" />
+                      <span className="leading-relaxed">{solution}</span>
+                    </div>
+                  ))}
+                </div>
               </div>
 
               {/* Bottom metrics bar */}
@@ -240,18 +299,46 @@ export function ServicesSection() {
                   {services[3].title}
                 </h3>
 
+                {/* Problem statement */}
+                <div className="mb-4 p-3 border-l-2 border-purple-500/30 bg-purple-500/5">
+                  <span className="font-mono text-[8px] text-purple-500/60 uppercase tracking-wider block mb-1">Problem</span>
+                  <p className="text-white/70 text-xs leading-relaxed">{services[3].problem}</p>
+                </div>
+
                 <p className="text-white/50 mb-5 leading-relaxed">
                   {services[3].description}
                 </p>
 
                 {/* Compact capabilities */}
-                <div className="space-y-2">
-                  {services[3].details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-white/50">
-                      <div className="w-px h-3 bg-cyan-500/30" />
-                      <span>{detail}</span>
-                    </div>
-                  ))}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-px bg-cyan-500/30" />
+                    <span className="font-mono text-[8px] text-cyan-500/40 uppercase tracking-wider">Capabilities</span>
+                  </div>
+                  <div className="space-y-2">
+                    {services[3].details.map((detail, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-white/50">
+                        <div className="w-px h-3 bg-cyan-500/30" />
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Solutions */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-px bg-green-500/30" />
+                    <span className="font-mono text-[8px] text-green-500/40 uppercase tracking-wider">Solutions</span>
+                  </div>
+                  <div className="space-y-2">
+                    {services[3].solutions.map((solution, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-white/50">
+                        <div className="w-1 h-1 bg-green-500/40 rounded-full mt-1.5 flex-shrink-0" />
+                        <span className="leading-relaxed">{solution}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Diagonal scan line effect */}
@@ -308,18 +395,46 @@ export function ServicesSection() {
                   {services[1].title}
                 </h3>
 
+                {/* Problem statement */}
+                <div className="mb-4 p-3 border-l-2 border-green-500/30 bg-green-500/5">
+                  <span className="font-mono text-[8px] text-green-500/60 uppercase tracking-wider block mb-1">Problem</span>
+                  <p className="text-white/70 text-xs leading-relaxed">{services[1].problem}</p>
+                </div>
+
                 <p className="text-white/50 mb-5 leading-relaxed">
                   {services[1].description}
                 </p>
 
                 {/* Compact capabilities */}
-                <div className="space-y-2">
-                  {services[1].details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-white/50">
-                      <div className="w-px h-3 bg-cyan-500/30" />
-                      <span>{detail}</span>
-                    </div>
-                  ))}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-px bg-cyan-500/30" />
+                    <span className="font-mono text-[8px] text-cyan-500/40 uppercase tracking-wider">Capabilities</span>
+                  </div>
+                  <div className="space-y-2">
+                    {services[1].details.map((detail, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-white/50">
+                        <div className="w-px h-3 bg-cyan-500/30" />
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Solutions */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-px bg-green-500/30" />
+                    <span className="font-mono text-[8px] text-green-500/40 uppercase tracking-wider">Solutions</span>
+                  </div>
+                  <div className="space-y-2">
+                    {services[1].solutions.map((solution, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-white/50">
+                        <div className="w-1 h-1 bg-green-500/40 rounded-full mt-1.5 flex-shrink-0" />
+                        <span className="leading-relaxed">{solution}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Diagonal scan line effect */}
@@ -370,18 +485,46 @@ export function ServicesSection() {
                   {services[2].title}
                 </h3>
 
+                {/* Problem statement */}
+                <div className="mb-4 p-3 border-l-2 border-cyan-500/30 bg-cyan-500/5">
+                  <span className="font-mono text-[8px] text-cyan-500/60 uppercase tracking-wider block mb-1">Problem</span>
+                  <p className="text-white/70 text-xs leading-relaxed">{services[2].problem}</p>
+                </div>
+
                 <p className="text-white/50 mb-5 leading-relaxed">
                   {services[2].description}
                 </p>
 
                 {/* Compact capabilities */}
-                <div className="space-y-2">
-                  {services[2].details.map((detail, idx) => (
-                    <div key={idx} className="flex items-center gap-2 text-xs text-white/50">
-                      <div className="w-px h-3 bg-cyan-500/30" />
-                      <span>{detail}</span>
-                    </div>
-                  ))}
+                <div className="mb-5">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-px bg-cyan-500/30" />
+                    <span className="font-mono text-[8px] text-cyan-500/40 uppercase tracking-wider">Capabilities</span>
+                  </div>
+                  <div className="space-y-2">
+                    {services[2].details.map((detail, idx) => (
+                      <div key={idx} className="flex items-center gap-2 text-xs text-white/50">
+                        <div className="w-px h-3 bg-cyan-500/30" />
+                        <span>{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Solutions */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-px bg-green-500/30" />
+                    <span className="font-mono text-[8px] text-green-500/40 uppercase tracking-wider">Solutions</span>
+                  </div>
+                  <div className="space-y-2">
+                    {services[2].solutions.map((solution, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-xs text-white/50">
+                        <div className="w-1 h-1 bg-green-500/40 rounded-full mt-1.5 flex-shrink-0" />
+                        <span className="leading-relaxed">{solution}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
                 {/* Diagonal scan line effect */}

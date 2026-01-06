@@ -663,7 +663,7 @@ export default function Home() {
               className="border-t border-white/5 pt-6 mt-6"
             >
               <p className="font-mono text-[10px] uppercase tracking-wider text-white/20 mb-3">
-                Modern stack. Serious security. UK-based.
+                Modern stack. <span className="text-cyan-500">Serious security</span>. UK based.
               </p>
               <TechStackTicker />
             </motion.div>
@@ -773,7 +773,7 @@ export default function Home() {
               </p>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight max-w-3xl">
-              Systems that work around your business
+              Systems that <span className="text-cyan-500">work</span> around your business
             </h2>
           </div>
 
@@ -890,7 +890,7 @@ export default function Home() {
               </p>
 
               <p className="text-xl text-white/60 mb-10 leading-relaxed max-w-xl">
-                Stop bending your business to fit off the shelf software. BOS is built around you, like an exoskeleton. Custom fitted to your processes, not some San Francisco tech team's idea of how you should work.
+                Stop bending your business to fit off the shelf software. BOS is built around you, like an <span className="text-cyan-500">exoskeleton</span>. Custom fitted to your processes, not some San Francisco tech team's idea of how you should work.
               </p>
 
               <ul className="space-y-4 mb-12">
@@ -909,9 +909,31 @@ export default function Home() {
 
               <a
                 href="https://cal.com/coldlava/discovery-call"
-                className="inline-block px-8 py-4 bg-cyan-500 text-white font-medium hover:bg-cyan-600 transition-colors"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-block"
               >
-                Talk to us
+                {/* Architectural frame that expands on hover */}
+                <div className="absolute -inset-2 border border-cyan-500/20 group-hover:border-cyan-500/30 transition-all duration-500" />
+                <div className="absolute -top-1 -left-1 w-4 h-4 border-l border-t border-cyan-500/40 group-hover:border-cyan-500/60 transition-all duration-500" />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 border-r border-b border-cyan-500/40 group-hover:border-cyan-500/60 transition-all duration-500" />
+
+                {/* Button */}
+                <div className="relative px-8 py-4 bg-white text-black font-medium overflow-hidden">
+                  {/* Hover effect - cyan sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-cyan-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+
+                  {/* Text */}
+                  <span className="relative z-10 flex items-center gap-3 group-hover:text-black transition-colors duration-300">
+                    <span>Talk to us</span>
+                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                </div>
               </a>
             </motion.div>
 
@@ -976,7 +998,7 @@ export default function Home() {
       <section className="py-20 border-t border-white/5">
         <div className="container-default">
           <p className="font-mono text-xs text-white/20 text-center uppercase tracking-wider mb-8">
-            We integrate with the tools you already use
+            We integrate with the tools <span className="text-cyan-500">you already use</span>
           </p>
           <IntegrationsTicker />
         </div>
@@ -1092,7 +1114,7 @@ export default function Home() {
                 Contact
               </p>
               <h2 className="text-5xl md:text-7xl font-bold mb-8">
-                Let's talk
+                Let's <span className="text-cyan-500">talk</span>
               </h2>
               <p className="text-xl text-white/50 mb-6">
                 Ready to build something? Book a discovery call or send us a message.
@@ -1102,18 +1124,61 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="flex flex-col justify-center gap-4">
+            <div className="flex flex-col justify-center gap-6">
               <a
                 href="https://cal.com/coldlava/discovery-call"
-                className="w-full px-8 py-5 bg-white text-black text-center font-medium hover:bg-cyan-500 hover:text-white transition-all duration-300"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative inline-block w-full"
               >
-                Book a discovery call
+                {/* Architectural frame that expands on hover */}
+                <div className="absolute -inset-2 border border-cyan-500/20 group-hover:border-cyan-500/30 transition-all duration-500" />
+                <div className="absolute -top-1 -left-1 w-4 h-4 border-l border-t border-cyan-500/40 group-hover:border-cyan-500/60 transition-all duration-500" />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 border-r border-b border-cyan-500/40 group-hover:border-cyan-500/60 transition-all duration-500" />
+
+                {/* Button */}
+                <div className="relative px-8 py-5 bg-white text-black font-medium overflow-hidden">
+                  {/* Hover effect - cyan sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-cyan-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+
+                  {/* Text */}
+                  <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-black transition-colors duration-300">
+                    <span>Book a discovery call</span>
+                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </span>
+
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                </div>
               </a>
+
               <a
                 href="mailto:hello@coldlava.ai"
-                className="w-full px-8 py-5 border border-white/10 text-center font-mono text-sm hover:border-white/30 transition-colors"
+                className="group relative inline-block w-full"
               >
-                hello@coldlava.ai
+                {/* Architectural frame that expands on hover */}
+                <div className="absolute -inset-2 border border-cyan-500/20 group-hover:border-cyan-500/30 transition-all duration-500" />
+                <div className="absolute -top-1 -left-1 w-4 h-4 border-l border-t border-cyan-500/40 group-hover:border-cyan-500/60 transition-all duration-500" />
+                <div className="absolute -bottom-1 -right-1 w-4 h-4 border-r border-b border-cyan-500/40 group-hover:border-cyan-500/60 transition-all duration-500" />
+
+                {/* Button */}
+                <div className="relative px-8 py-5 bg-white text-black font-medium overflow-hidden">
+                  {/* Hover effect - cyan sweep */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-cyan-400 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-out" />
+
+                  {/* Text */}
+                  <span className="relative z-10 flex items-center justify-center gap-3 group-hover:text-black transition-colors duration-300 font-mono text-sm">
+                    <span>hello@coldlava.ai</span>
+                    <svg className="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </span>
+
+                  {/* Scan line effect */}
+                  <div className="absolute inset-0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-12" />
+                </div>
               </a>
             </div>
           </div>

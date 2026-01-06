@@ -8,10 +8,11 @@ import { cn } from '@/lib/utils'
 import { HeaderClock } from './HeaderClock'
 
 const navItems = [
-  { label: 'Work', href: '#work' },
+  { label: 'Process', href: '#process' },
   { label: 'Services', href: '#services' },
   { label: 'BOS', href: '#bos' },
-  { label: 'About', href: '#about' },
+  { label: 'Clients', href: '#clients' },
+  { label: 'Contact', href: '#contact' },
 ]
 
 export function Navigation() {

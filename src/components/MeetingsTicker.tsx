@@ -41,8 +41,8 @@ export function MeetingsTicker() {
     return (
       <div className="flex items-baseline gap-2 font-mono text-xs text-white/30">
         <span className="text-[10px] text-cyan-500/40 uppercase tracking-wider">📅</span>
+        <span className="text-white/20">meetings today that could have been emails:</span>
         <span className="text-cyan-400/50 tabular-nums">—</span>
-        <span className="text-white/20">meetings today that could have been emails</span>
       </div>
     )
   }
@@ -50,13 +50,16 @@ export function MeetingsTicker() {
   return (
     <div
       className="relative flex items-baseline gap-2 font-mono text-xs"
-      title="Based on 11M daily US meetings (Lucid) × 55% deemed unnecessary (Calendly)"
+      title="Based on 11M daily US meetings (Lucid Meetings) × 55% deemed unnecessary (Calendly)"
     >
       {/* Corner bracket accent */}
       <div className="absolute -top-1 -left-2 w-2 h-2 border-l border-t border-cyan-500/20" />
 
       {/* Calendar icon */}
       <span className="text-[10px] text-cyan-500/40 uppercase tracking-wider">📅</span>
+
+      {/* Label */}
+      <span className="text-white/30 font-light">meetings today that could have been emails:</span>
 
       {/* Animated count */}
       <motion.span
@@ -68,9 +71,6 @@ export function MeetingsTicker() {
       >
         {formatNumber(count)}
       </motion.span>
-
-      {/* Label */}
-      <span className="text-white/30 font-light">meetings today that could have been emails</span>
 
       {/* Subtle glow effect */}
       <div className="absolute inset-0 bg-cyan-500/5 blur-xl -z-10 opacity-40" />

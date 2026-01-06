@@ -87,9 +87,9 @@ export function ProcessSection() {
             </p>
           </div>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
-            No surprises.
+            No <span className="text-cyan-500">surprises</span>
             <br />
-            No black boxes.
+            No black boxes
           </h2>
         </motion.div>
 

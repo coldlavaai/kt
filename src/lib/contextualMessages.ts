@@ -2,57 +2,58 @@ interface SpecialDay {
   month: number // 1-12
   day: number
   message: string
+  description?: string
 }
 
 // Fixed-date holidays and special days
 const SPECIAL_DAYS: SpecialDay[] = [
   // January
-  { month: 1, day: 1, message: 'Happy New Year' },
-  { month: 1, day: 6, message: 'Happy Epiphany' },
-  { month: 1, day: 25, message: 'Happy Burns Night' },
+  { month: 1, day: 1, message: 'Happy New Year', description: 'The first day of the year. Celebrated worldwide with fireworks, parties, and resolutions for self-improvement in the year ahead.' },
+  { month: 1, day: 6, message: 'Happy Epiphany', description: 'Christian feast day celebrating the revelation of God incarnate as Jesus Christ. In many cultures, it marks the end of the Twelve Days of Christmas and the arrival of the Three Wise Men.' },
+  { month: 1, day: 25, message: 'Happy Burns Night', description: 'Scottish celebration of poet Robert Burns, born 1759. Traditionally features haggis, whisky, poetry recitals, and bagpipes. "Auld Lang Syne" was written by Burns.' },
 
   // February
-  { month: 2, day: 2, message: 'Happy Groundhog Day' },
-  { month: 2, day: 14, message: "Happy Valentine's Day" },
+  { month: 2, day: 2, message: 'Happy Groundhog Day', description: 'North American tradition where a groundhog emerging from its burrow predicts spring\'s arrival. If it sees its shadow, six more weeks of winter; if not, early spring.' },
+  { month: 2, day: 14, message: "Happy Valentine's Day", description: 'Day of romance celebrating St. Valentine. Evolved from ancient Roman festival Lupercalia. Now a global celebration of love and affection with cards, flowers, and chocolates.' },
 
   // March
-  { month: 3, day: 1, message: "Happy St David's Day" },
-  { month: 3, day: 14, message: 'Happy Pi Day' },
-  { month: 3, day: 17, message: "Happy St Patrick's Day" },
+  { month: 3, day: 1, message: "Happy St David's Day", description: 'National day of Wales celebrating St. David, the patron saint. Welsh people wear daffodils or leeks, traditional symbols of Wales, and celebrate Welsh culture.' },
+  { month: 3, day: 14, message: 'Happy Pi Day', description: 'Celebrates the mathematical constant π (3.14...). Observed by mathematics enthusiasts worldwide. Often celebrated with pie eating, as "pi" and "pie" are homophones.' },
+  { month: 3, day: 17, message: "Happy St Patrick's Day", description: 'Irish cultural and religious celebration. Commemorates St. Patrick, who brought Christianity to Ireland in the 5th century. Celebrated globally with parades, green attire, and Irish music.' },
 
   // April
-  { month: 4, day: 1, message: "Happy April Fools' Day" },
-  { month: 4, day: 22, message: 'Happy Earth Day' },
-  { month: 4, day: 23, message: "Happy St George's Day" },
+  { month: 4, day: 1, message: "Happy April Fools' Day", description: 'Day of pranks and hoaxes. Origins unclear, possibly dating to the switch from Julian to Gregorian calendar in 1582. Major news outlets often publish fake stories.' },
+  { month: 4, day: 22, message: 'Happy Earth Day', description: 'Annual event supporting environmental protection. First celebrated in 1970, now observed in 193 countries. Led to the creation of environmental legislation worldwide.' },
+  { month: 4, day: 23, message: "Happy St George's Day", description: 'National day of England celebrating St. George, the patron saint. Known for the legend of slaying a dragon. Celebrated with English flags, Morris dancing, and medieval fairs.' },
 
   // May
-  { month: 5, day: 4, message: 'May the Fourth be with you' },
-  { month: 5, day: 5, message: 'Happy Cinco de Mayo' },
+  { month: 5, day: 4, message: 'May the Fourth be with you', description: 'Unofficial Star Wars Day, a play on "May the Force be with you." Fans celebrate the franchise with marathons, cosplay, and special events. First Star Wars film released in 1977.' },
+  { month: 5, day: 5, message: 'Happy Cinco de Mayo', description: 'Commemorates the Mexican Army\'s victory over France at the Battle of Puebla in 1862. More widely celebrated in the US than Mexico, featuring Mexican cuisine and culture.' },
 
   // June
-  { month: 6, day: 21, message: 'Happy Summer Solstice' },
+  { month: 6, day: 21, message: 'Happy Summer Solstice', description: 'Longest day of the year in the Northern Hemisphere. Ancient cultures built monuments like Stonehenge to mark this astronomical event. Celebrated since prehistoric times.' },
 
   // July
-  { month: 7, day: 4, message: 'Happy Independence Day' },
-  { month: 7, day: 14, message: 'Happy Bastille Day' },
+  { month: 7, day: 4, message: 'Happy Independence Day', description: 'US Independence Day celebrating the Declaration of Independence in 1776. Marked with fireworks, parades, barbecues, and patriotic displays. "Fourth of July" is a federal holiday.' },
+  { month: 7, day: 14, message: 'Happy Bastille Day', description: 'French National Day commemorating the storming of the Bastille prison in 1789, sparking the French Revolution. Celebrated with military parades, fireworks, and parties.' },
 
   // September
-  { month: 9, day: 19, message: 'Ahoy! Talk Like a Pirate Day' },
+  { month: 9, day: 19, message: 'Ahoy! Talk Like a Pirate Day', description: 'Parodic holiday created in 1995. Participants speak in pirate slang for the day. Despite being entirely made up, it gained international recognition and corporate participation.' },
 
   // October
-  { month: 10, day: 3, message: 'Happy German Unity Day' },
-  { month: 10, day: 31, message: 'Happy Halloween' },
+  { month: 10, day: 3, message: 'Happy German Unity Day', description: 'German national holiday celebrating reunification of East and West Germany in 1990. Marks the end of division following World War II and the Cold War.' },
+  { month: 10, day: 31, message: 'Happy Halloween', description: 'Ancient Celtic festival of Samhain, marking summer\'s end. Evolved into a night of costumes, trick-or-treating, and spooky celebrations. Second-highest grossing commercial holiday after Christmas.' },
 
   // November
-  { month: 11, day: 5, message: 'Remember, remember...' },
-  { month: 11, day: 11, message: 'Lest we forget' },
-  { month: 11, day: 30, message: "Happy St Andrew's Day" },
+  { month: 11, day: 5, message: 'Remember, remember...', description: 'Guy Fawkes Night commemorating the failed Gunpowder Plot to blow up Parliament in 1605. Celebrated in the UK with bonfires, fireworks, and burning effigies of Guy Fawkes.' },
+  { month: 11, day: 11, message: 'Lest we forget', description: 'Remembrance Day honoring armed forces members who died in the line of duty. Observed in Commonwealth countries at 11am on 11/11, marking the WWI armistice in 1918.' },
+  { month: 11, day: 30, message: "Happy St Andrew's Day", description: 'National day of Scotland celebrating St. Andrew, the patron saint. Traditional celebrations include Scottish dancing, music, and a feast of haggis, neeps, and tatties.' },
 
   // December
-  { month: 12, day: 24, message: 'Merry Christmas Eve' },
-  { month: 12, day: 25, message: 'Merry Christmas' },
-  { month: 12, day: 26, message: 'Happy Boxing Day' },
-  { month: 12, day: 31, message: "Happy New Year's Eve" },
+  { month: 12, day: 24, message: 'Merry Christmas Eve', description: 'The night before Christmas. Many cultures have traditions including midnight mass, gift opening, special meals, and leaving treats for Santa. In some countries, the main celebration day.' },
+  { month: 12, day: 25, message: 'Merry Christmas', description: 'Christian celebration of Jesus Christ\'s birth. One of the most widely celebrated holidays worldwide, blending religious observance with secular traditions like gift-giving and Santa Claus.' },
+  { month: 12, day: 26, message: 'Happy Boxing Day', description: 'British Commonwealth holiday traditionally when servants received gifts ("boxes") from employers. Now a major shopping day and sports day, particularly for football and horse racing.' },
+  { month: 12, day: 31, message: "Happy New Year's Eve", description: 'The final day of the year. Celebrated with parties, countdown to midnight, fireworks, champagne, and singing "Auld Lang Syne." Times Square ball drop attracts millions of viewers.' },
 ]
 
 // Positive quotes for non-special days
@@ -185,8 +186,13 @@ function getDailyQuote(date: Date): string {
   return DAILY_QUOTES[quoteIndex]
 }
 
+export interface ContextualMessageData {
+  message: string
+  description?: string
+}
+
 // Main export
-export function getContextualMessage(now: Date): string {
+export function getContextualMessage(now: Date): ContextualMessageData {
   // Get London date for consistency
   const londonDate = new Date(
     now.toLocaleString('en-US', { timeZone: 'Europe/London' })
@@ -200,15 +206,18 @@ export function getContextualMessage(now: Date): string {
   )
 
   if (fixedHoliday) {
-    return fixedHoliday.message
+    return {
+      message: fixedHoliday.message,
+      description: fixedHoliday.description
+    }
   }
 
   // Check moveable holidays
   const moveableHoliday = getMoveableHoliday(londonDate)
   if (moveableHoliday) {
-    return moveableHoliday
+    return { message: moveableHoliday }
   }
 
   // Default to daily quote
-  return getDailyQuote(londonDate)
+  return { message: getDailyQuote(londonDate) }
 }

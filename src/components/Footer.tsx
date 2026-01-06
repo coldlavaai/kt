@@ -26,8 +26,8 @@ export function Footer() {
 
           {/* Links */}
           <div className="flex flex-wrap gap-6 md:gap-8 text-sm text-white/40">
-            <Link href="#work" className="hover:text-white transition-colors">
-              Work
+            <Link href="#process" className="hover:text-white transition-colors">
+              Process
             </Link>
             <Link href="#services" className="hover:text-white transition-colors">
               Services
@@ -35,14 +35,11 @@ export function Footer() {
             <Link href="#bos" className="hover:text-white transition-colors">
               BOS
             </Link>
-            <Link href="#about" className="hover:text-white transition-colors">
-              About
+            <Link href="#clients" className="hover:text-white transition-colors">
+              Clients
             </Link>
-            <Link
-              href="mailto:hello@coldlava.ai"
-              className="hover:text-white transition-colors"
-            >
-              hello@coldlava.ai
+            <Link href="#contact" className="hover:text-white transition-colors">
+              Contact
             </Link>
           </div>
         </div>

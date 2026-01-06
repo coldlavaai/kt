@@ -856,101 +856,261 @@ export default function Home() {
       </section>
 
       {/* TESTIMONIALS - Architectural Blueprint */}
-      <section id="clients" className="relative py-32 border-t border-white/5 overflow-hidden">
-        <div className="container-default">
+      <section id="clients" className="relative py-24 border-t border-white/5 overflow-hidden">
+        <GridOverlay spacing={32} opacity={0.01} />
+
+        <div className="container-default relative">
           {/* Section Header */}
-          <div className="mb-20">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-14"
+          >
             <div className="flex items-center gap-4 mb-4">
               <div className="h-px w-12 bg-cyan-500/40" />
               <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/30">
-                Client Testimonials
+                Client Feedback / 003
               </p>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight">
-              Working with Cold Lava
+              Built for <span className="text-cyan-500">real</span> businesses
             </h2>
+          </motion.div>
+
+          {/* Coordinate System Overlay */}
+          <div className="absolute top-20 left-0 right-0 pointer-events-none hidden lg:block">
+            <div className="container-default relative">
+              <div className="flex justify-between items-center">
+                <span className="font-mono text-[8px] text-white/15">X: 0.00</span>
+                <span className="font-mono text-[8px] text-white/15">X: 1.00</span>
+              </div>
+            </div>
           </div>
 
-          {/* Architectural Testimonial Grid */}
-          <div className="grid md:grid-cols-12 gap-6 auto-rows-fr">
-            {testimonials.map((t, i) => {
-              // Architectural layout pattern: varied sizes for visual interest
-              const layouts = [
-                'md:col-span-8', // Wide
-                'md:col-span-4', // Narrow
-                'md:col-span-5', // Medium
-                'md:col-span-7', // Medium-wide
-                'md:col-span-12', // Full width
-              ]
+          {/* Asymmetric Testimonials Layout */}
+          <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 relative">
+            {/* Y-axis markers */}
+            <div className="absolute -left-16 top-0 bottom-0 hidden xl:flex flex-col justify-between py-4 pointer-events-none">
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[8px] text-white/15">Y: 1.0</span>
+                <div className="w-4 h-px bg-cyan-500/20" />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-mono text-[8px] text-white/15">Y: 0.0</span>
+                <div className="w-4 h-px bg-cyan-500/20" />
+              </div>
+            </div>
 
-              return (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.7,
-                    delay: i * 0.1,
-                    ease: [0.22, 1, 0.36, 1]
-                  }}
-                  className={`group relative ${layouts[i]} h-full`}
-                >
-                  {/* Architectural frame */}
-                  <div className="relative h-full bg-white/[0.01] border border-white/5 p-6 md:p-7 hover:border-cyan-500/30 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] transition-all duration-700">
-                    {/* Corner brackets */}
-                    <div className="absolute top-0 left-0 w-6 h-6 border-l border-t border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute top-0 right-0 w-6 h-6 border-r border-t border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 w-6 h-6 border-l border-b border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 right-0 w-6 h-6 border-r border-b border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            {/* Featured Testimonial - Detail Dynamics */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative lg:row-span-2"
+            >
+              {/* Outer frame */}
+              <div className="absolute -inset-4 border border-cyan-500/10 group-hover:border-cyan-500/20 transition-all duration-700" />
 
-                    {/* Testimonial number */}
-                    <div className="absolute -top-3 left-6 bg-black px-2">
-                      <span className="font-mono text-[10px] text-cyan-500/60">
-                        {String(i + 1).padStart(2, '0')}
-                      </span>
+              {/* Corner markers */}
+              <div className="absolute -top-2 -left-2 w-6 h-6 border-l-2 border-t-2 border-cyan-500/30 group-hover:border-cyan-500/50 transition-all duration-500" />
+              <div className="absolute -bottom-2 -right-2 w-6 h-6 border-r-2 border-b-2 border-cyan-500/30 group-hover:border-cyan-500/50 transition-all duration-500" />
+
+              {/* Technical annotation */}
+              <div className="absolute -top-3 left-8 bg-black px-3 z-10">
+                <span className="font-mono text-[10px] text-cyan-500/60 uppercase tracking-wider">Featured / 01</span>
+              </div>
+
+              {/* Corner coordinate */}
+              <div className="absolute top-0 left-0 -translate-y-full pl-2 pb-1 hidden lg:block">
+                <span className="font-mono text-[8px] text-white/15">[0.0, 1.0]</span>
+              </div>
+
+              {/* Main card */}
+              <div className="relative h-full bg-gradient-to-br from-white/[0.02] to-white/[0.01] border border-white/10 p-6 lg:p-8 overflow-hidden">
+                {/* Scan line */}
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500/50 to-transparent translate-y-0 group-hover:translate-y-full transition-transform duration-[3000ms] ease-linear" />
+
+                {/* Company status */}
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse" />
+                  <span className="font-mono text-[9px] text-cyan-500/60 uppercase tracking-wider">Active Client</span>
+                </div>
+
+                {/* Company name with decorative line */}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-8 h-px bg-cyan-500/40" />
+                  <span className="font-mono text-[10px] text-cyan-500/60 uppercase tracking-wider">{testimonials[0].company}</span>
+                  <div className="flex-1 h-px bg-gradient-to-r from-cyan-500/20 to-transparent" />
+                </div>
+
+                {/* Quote */}
+                <blockquote className="relative mb-8">
+                  <div className="absolute -left-3 -top-2 text-7xl text-cyan-500/10 leading-none font-serif select-none">"</div>
+                  <p className="relative text-white/80 text-xl lg:text-2xl leading-relaxed">
+                    {testimonials[0].quote}
+                  </p>
+                </blockquote>
+
+                {/* Attribution */}
+                <div className="border-t border-white/5 pt-6 mt-auto">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-[#C9A962] font-semibold text-lg">{testimonials[0].name}</div>
+                      <div className="text-white/40 font-mono text-xs mt-1 uppercase tracking-wider">{testimonials[0].role}</div>
                     </div>
-
-                    {/* Quote */}
-                    <blockquote className="relative mb-6">
-                      <div className="absolute -left-2 top-0 text-6xl text-cyan-500/10 leading-none font-serif">"</div>
-                      <p className={`relative text-white/70 italic leading-relaxed ${i === 4 ? 'text-xl md:text-2xl' : 'text-lg md:text-xl'}`}>
-                        {t.quote}
-                      </p>
-                    </blockquote>
-
-                    {/* Attribution with architectural line */}
-                    <div className="flex items-center gap-4 mt-auto">
-                      <div className="flex-shrink-0 w-1 h-1 bg-cyan-500 rounded-full" />
-                      <div className="flex-grow h-px bg-gradient-to-r from-white/10 to-transparent" />
-                      <cite className="not-italic flex-shrink-0">
-                        <div className="text-right">
-                          <div className="text-cyan-500 font-medium">{t.author}</div>
-                          {t.company && (
-                            <div className="text-white/40 font-mono text-xs mt-1">{t.company}</div>
-                          )}
-                        </div>
-                      </cite>
+                    <div className="flex items-center gap-2">
+                      <div className="w-1.5 h-1.5 bg-cyan-500/40 rotate-45" />
+                      <span className="font-mono text-[8px] text-white/20 uppercase tracking-wider">Verified</span>
                     </div>
                   </div>
+                </div>
 
-                  {/* Subtle grid overlay on hover */}
-                  <div
-                    className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-700 pointer-events-none"
-                    style={{
-                      backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-                      backgroundSize: '20px 20px'
-                    }}
-                  />
-                </motion.div>
-              )
-            })}
+                {/* Hover grid overlay */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-[0.03] transition-opacity duration-1000 pointer-events-none"
+                  style={{
+                    backgroundImage: 'linear-gradient(rgba(6,182,212,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(6,182,212,0.4) 1px, transparent 1px)',
+                    backgroundSize: '24px 24px'
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Secondary Testimonial - Greenstar Solar */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="group relative"
+            >
+              {/* Technical frame */}
+              <div className="absolute -inset-2 border border-white/5 group-hover:border-cyan-500/10 transition-all duration-500" />
+
+              {/* Corner brackets */}
+              <div className="absolute top-0 left-0 w-4 h-4 border-l border-t border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute bottom-0 right-0 w-4 h-4 border-r border-b border-cyan-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Number tag */}
+              <div className="absolute -top-2.5 left-6 bg-black px-2 z-10">
+                <span className="font-mono text-[10px] text-cyan-500/60">02</span>
+              </div>
+
+              {/* Corner coordinate */}
+              <div className="absolute top-0 right-0 -translate-y-full pr-2 pb-1 hidden lg:block">
+                <span className="font-mono text-[8px] text-white/15">[1.0, 0.5]</span>
+              </div>
+
+              <div className="relative bg-white/[0.01] border border-white/5 p-5 lg:p-6 hover:border-white/10 transition-all duration-500 overflow-hidden h-full flex flex-col">
+                {/* Status indicator */}
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="w-1.5 h-1.5 bg-[#C9A962] rounded-full animate-pulse" />
+                  <span className="font-mono text-[8px] text-white/30 uppercase tracking-wider">Active Client</span>
+                </div>
+
+                {/* Company */}
+                <div className="flex items-center gap-2 mb-4">
+                  <div className="w-6 h-px bg-cyan-500/30" />
+                  <span className="font-mono text-[9px] text-cyan-500/50 uppercase tracking-wider">{testimonials[1].company}</span>
+                </div>
+
+                {/* Quote */}
+                <blockquote className="relative mb-6 flex-grow">
+                  <p className="text-white/70 text-base lg:text-lg leading-relaxed">
+                    "{testimonials[1].quote}"
+                  </p>
+                </blockquote>
+
+                {/* Attribution */}
+                <div className="border-t border-white/5 pt-4 mt-auto">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="text-[#C9A962] font-medium">{testimonials[1].name}</div>
+                      <div className="text-white/30 font-mono text-[10px] mt-1 uppercase tracking-wider">{testimonials[1].role}</div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Diagonal scan effect */}
+                <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[2000ms] bg-gradient-to-r from-transparent via-cyan-500/5 to-transparent skew-x-12 pointer-events-none" />
+              </div>
+            </motion.div>
+
+            {/* Stats/Metrics Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative"
+            >
+              <div className="border border-white/5 p-5 lg:p-6 bg-white/[0.005] h-full">
+                {/* Technical label */}
+                <div className="flex items-center gap-2 mb-6">
+                  <div className="w-1 h-1 bg-cyan-500/40 rotate-45" />
+                  <span className="font-mono text-[9px] text-white/30 uppercase tracking-wider">Client Metrics</span>
+                </div>
+
+                {/* Stats grid */}
+                <div className="space-y-4">
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[10px] text-white/40 uppercase tracking-wider">Satisfaction</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-3xl font-bold text-cyan-500">100</span>
+                      <span className="text-white/30 text-sm">%</span>
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-cyan-500/20 to-transparent" />
+
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[10px] text-white/40 uppercase tracking-wider">Active Projects</span>
+                    <div className="flex items-baseline gap-1">
+                      <span className="text-3xl font-bold text-[#C9A962]">02</span>
+                    </div>
+                  </div>
+                  <div className="h-px bg-gradient-to-r from-[#C9A962]/20 to-transparent" />
+
+                  <div className="flex items-baseline justify-between">
+                    <span className="font-mono text-[10px] text-white/40 uppercase tracking-wider">Since</span>
+                    <span className="font-mono text-sm text-white/50">2024</span>
+                  </div>
+                </div>
+
+                {/* Bottom annotation */}
+                <div className="mt-6 pt-4 border-t border-white/5">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 border border-cyan-500/30 rotate-45" />
+                    <span className="font-mono text-[8px] text-white/20 uppercase tracking-wider">Real-time data</span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
+
+          {/* Bottom technical annotation */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-center mt-12"
+          >
+            <div className="inline-flex items-center gap-3">
+              <div className="h-px w-8 bg-cyan-500/20" />
+              <p className="font-mono text-[10px] text-white/30 uppercase tracking-wider">
+                Verified Client Feedback
+              </p>
+              <div className="h-px w-8 bg-cyan-500/20" />
+            </div>
+          </motion.div>
         </div>
 
-        {/* Background architectural elements */}
-        <div className="absolute top-1/4 right-0 w-px h-1/2 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent" />
-        <div className="absolute top-1/2 left-0 w-px h-1/4 bg-gradient-to-b from-transparent via-cyan-500/10 to-transparent" />
+        {/* Background technical elements */}
+        <div className="absolute top-1/4 right-0 w-px h-1/2 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
+        <div className="absolute top-1/2 left-0 w-px h-1/4 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent" />
       </section>
 
 

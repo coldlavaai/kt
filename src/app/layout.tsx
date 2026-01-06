@@ -20,6 +20,11 @@ export const metadata: Metadata = {
     template: '%s | Cold Lava',
   },
   description: 'Bespoke Business Operating Systems, custom CRMs, AI voice agents, and workflow automation that actually work. We build the systems that let you focus on what matters.',
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    viewportFit: 'cover',
+  },
   keywords: [
     'AI automation',
     'business automation',

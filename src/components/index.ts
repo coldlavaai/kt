@@ -1,4 +1,5 @@
 export { SmoothScroll } from './SmoothScroll'
+export { LenisProvider, useLenis } from '@/contexts/LenisContext'
 export { Navigation } from './Navigation'
 export { HeaderClock } from './HeaderClock'
 export { ConsoleEasterEgg } from './ConsoleEasterEgg'

@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { fetchWithTimeout } from '@/lib/fetchWithTimeout'
+import { RateLimiter } from '@/lib/rateLimit'
 
 interface ISSResponse {
   latitude: number
@@ -13,6 +15,9 @@ interface ISSResponse {
   timestamp: number
 }
 
+// Rate limiter for geocoding API (1 call per second max)
+const geocodeRateLimiter = new RateLimiter(1)
+
 export function ISSTracker() {
   const [location, setLocation] = useState<string>('')
   const [mounted, setMounted] = useState(false)
@@ -23,7 +28,12 @@ export function ISSTracker() {
     const fetchISSLocation = async () => {
       try {
         // Get ISS coordinates (using HTTPS to avoid mixed content blocking)
-        const issResponse = await fetch('https://api.wheretheiss.at/v1/satellites/25544')
+        // Timeout after 8 seconds to prevent hanging
+        const issResponse = await fetchWithTimeout(
+          'https://api.wheretheiss.at/v1/satellites/25544',
+          {},
+          8000
+        )
 
         if (!issResponse.ok) {
           throw new Error(`ISS API returned ${issResponse.status}`)
@@ -33,13 +43,17 @@ export function ISSTracker() {
         const { latitude, longitude } = issData
 
         // Convert to location name using geocode.xyz
-        const geoResponse = await fetch(
-          `https://geocode.xyz/${latitude},${longitude}?json=1`,
-          {
-            headers: {
-              'User-Agent': 'ColdLava-ISS-Tracker/1.0'
-            }
-          }
+        // Rate limited + timeout to prevent API abuse and hanging
+        const geoResponse = await geocodeRateLimiter.throttle(() =>
+          fetchWithTimeout(
+            `https://geocode.xyz/${latitude},${longitude}?json=1`,
+            {
+              headers: {
+                'User-Agent': 'ColdLava-ISS-Tracker/1.0'
+              }
+            },
+            8000
+          )
         )
 
         if (!geoResponse.ok) {

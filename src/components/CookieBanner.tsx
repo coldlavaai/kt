@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { updateConsent } from '@/lib/tracking'
 
 // Safe localStorage wrapper - handles private browsing, quota exceeded, etc.
 const safeLocalStorage = {
@@ -41,9 +42,14 @@ export function CookieBanner() {
   const acceptCookies = () => {
     safeLocalStorage.setItem('cookie_consent', 'accepted')
     safeLocalStorage.setItem('cookie_consent_date', new Date().toISOString())
+    safeLocalStorage.setItem('cookie_consent_analytics', 'true')
+    safeLocalStorage.setItem('cookie_consent_marketing', 'true')
     setShowBanner(false)
 
-    // Initialize analytics if needed
+    // Update tracking consent (analytics, marketing, functionality)
+    updateConsent(true, true, true)
+
+    // Grant consent for Facebook Pixel
     if (typeof window !== 'undefined' && 'fbq' in window && typeof (window as any).fbq === 'function') {
       (window as any).fbq('consent', 'grant')
     }
@@ -52,9 +58,14 @@ export function CookieBanner() {
   const declineCookies = () => {
     safeLocalStorage.setItem('cookie_consent', 'declined')
     safeLocalStorage.setItem('cookie_consent_date', new Date().toISOString())
+    safeLocalStorage.setItem('cookie_consent_analytics', 'false')
+    safeLocalStorage.setItem('cookie_consent_marketing', 'false')
     setShowBanner(false)
 
-    // Disable analytics
+    // Update tracking consent (only essential/functionality, no analytics or marketing)
+    updateConsent(false, false, true)
+
+    // Revoke consent for Facebook Pixel
     if (typeof window !== 'undefined' && 'fbq' in window && typeof (window as any).fbq === 'function') {
       (window as any).fbq('consent', 'revoke')
     }

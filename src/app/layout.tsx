@@ -4,6 +4,8 @@ import { SmoothScroll, Navigation, Footer, CookieBanner, StickyCTA } from '@/com
 import { ConsoleEasterEgg } from '@/components/ConsoleEasterEgg'
 import { DynamicFavicon } from '@/components/DynamicFavicon'
 import { OrganizationSchema, LocalBusinessSchema, ServiceSchema, WebsiteSchema } from '@/components/StructuredData'
+import { GoogleTagManager, TrackingScripts } from '@/components/tracking'
+import { LeadCaptureProvider } from '@/components/LeadCapture/LeadCaptureProvider'
 import '@/styles/globals.css'
 
 // Export Web Vitals reporting for Next.js
@@ -103,10 +105,13 @@ export default function RootLayout({
         <LocalBusinessSchema />
         <ServiceSchema />
         <WebsiteSchema />
+        <GoogleTagManager />
       </head>
       <body className="font-sans antialiased">
         <ConsoleEasterEgg />
         <DynamicFavicon />
+        <TrackingScripts />
+        <LeadCaptureProvider />
         <SmoothScroll>
           <Navigation />
           <main>{children}</main>

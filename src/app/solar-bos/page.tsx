@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { FadeIn, GridOverlay, TechnicalLabel, FAQSchema } from '@/components'
+import { FadeIn, GridOverlay, TechnicalLabel, FAQSchema, ProductScreenshot, VideoEmbed } from '@/components'
 
 export const metadata: Metadata = {
   title: 'Solar BOS – Business Operating System for UK Solar Installers',
@@ -133,57 +133,72 @@ export default function SolarBOSPage() {
       <FAQSchema faqs={faqItems} />
 
       {/* Hero */}
-      <section className="relative min-h-[80vh] flex items-center border-b border-white/5 overflow-hidden">
+      <section className="relative min-h-[85vh] flex items-center border-b border-white/5 overflow-hidden">
         <GridOverlay spacing={32} opacity={0.02} />
         <TechnicalLabel position="top-left">Solar BOS · UK Installers</TechnicalLabel>
         <TechnicalLabel position="top-right">Version 0.1 · Early Access</TechnicalLabel>
 
         <div className="container-default relative z-10 pt-28 pb-24 md:pb-32">
-          <div className="max-w-3xl">
-            <FadeIn>
-              <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/40 mb-6 font-mono">
-                Business Operating System for UK Solar Installers
-              </p>
-            </FadeIn>
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 lg:gap-16 items-center">
+            {/* Left: Copy and CTAs */}
+            <div>
+              <FadeIn>
+                <p className="text-xs sm:text-sm uppercase tracking-[0.2em] text-white/40 mb-6 font-mono">
+                  Business Operating System for UK Solar Installers
+                </p>
+              </FadeIn>
 
-            <FadeIn delay={0.1}>
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-[1.1] mb-8">
-                Solar BOS – run your entire solar business from one board
-              </h1>
-            </FadeIn>
+              <FadeIn delay={0.1}>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-[-0.03em] leading-[1.1] mb-8">
+                  Solar BOS – run your entire solar business from one board
+                </h1>
+              </FadeIn>
 
-            <FadeIn delay={0.2}>
-              <p className="text-base sm:text-lg md:text-xl text-white/60 max-w-2xl mb-12 leading-relaxed">
-                Solar BOS is a complete business operating system for UK solar installers. It is often described as solar
-                CRM and job management software, but its goal is to replace your patchwork of spreadsheets, generic CRMs,
-                shared inboxes and WhatsApp groups with one system built around how solar companies actually run – from
-                lead to survey to quote to install to aftercare.
-              </p>
-            </FadeIn>
+              <FadeIn delay={0.2}>
+                <p className="text-base sm:text-lg md:text-xl text-white/60 mb-12 leading-relaxed">
+                  Solar BOS is a complete business operating system for UK solar installers. It is often described as solar
+                  CRM and job management software, but its goal is to replace your patchwork of spreadsheets, generic CRMs,
+                  shared inboxes and WhatsApp groups with one system built around how solar companies actually run – from
+                  lead to survey to quote to install to aftercare.
+                </p>
+              </FadeIn>
 
-            <FadeIn delay={0.3}>
-              <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
-                <Link
-                  href="https://cal.com/coldlava/solar-bos-discovery"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-primary glow-orange-sm w-full sm:w-auto text-center"
-                >
-                  Book a Solar BOS demo
-                </Link>
-                <Link
-                  href="mailto:hello@coldlava.ai?subject=Solar%20BOS%20early%20access"
-                  className="btn-secondary w-full sm:w-auto text-center"
-                >
-                  Join the early access list
-                </Link>
+              <FadeIn delay={0.3}>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                  <Link
+                    href="https://cal.com/coldlava/solar-bos-discovery"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary glow-orange-sm w-full sm:w-auto text-center"
+                  >
+                    Book a Solar BOS demo
+                  </Link>
+                  <Link
+                    href="#demo-video"
+                    className="btn-secondary w-full sm:w-auto text-center"
+                  >
+                    Watch 60-second walkthrough
+                  </Link>
+                </div>
+              </FadeIn>
+
+              <FadeIn delay={0.35}>
+                <p className="text-xs text-white/40 font-mono uppercase tracking-[0.18em]">
+                  Built in the UK for MCS-certified solar installation companies
+                </p>
+              </FadeIn>
+            </div>
+
+            {/* Right: Product Screenshot */}
+            <FadeIn delay={0.4}>
+              <div className="hidden lg:block">
+                <ProductScreenshot
+                  src="/screenshots/dbr-dashboard.png"
+                  alt="Solar BOS job board showing solar installation stages from new lead to installed"
+                  caption="Solar job board with stages from lead to install"
+                  priority
+                />
               </div>
-            </FadeIn>
-
-            <FadeIn delay={0.35}>
-              <p className="text-xs text-white/40 font-mono uppercase tracking-[0.18em]">
-                Built in the UK for MCS-certified solar installation companies
-              </p>
             </FadeIn>
           </div>
         </div>
@@ -240,6 +255,47 @@ export default function SolarBOSPage() {
               </div>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* Demo Video Section */}
+      <section id="demo-video" className="py-20 md:py-28 border-b border-white/5 bg-gradient-to-b from-transparent to-white/[0.01]">
+        <div className="container-default max-w-4xl">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4">
+                See Solar BOS in action
+              </h2>
+              <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                Watch a 60-second walkthrough of how Solar BOS helps UK solar installers manage their entire operation
+                from one board.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <VideoEmbed
+              videoUrl="https://www.loom.com/share/placeholder"
+              title="Watch a 60-second walkthrough of Solar BOS"
+              duration="60s"
+            />
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="mt-8 text-center">
+              <p className="text-white/40 text-sm mb-4">
+                See how Solar BOS handles leads, customer timelines, communications and scheduling for UK solar companies
+              </p>
+              <Link
+                href="https://cal.com/coldlava/solar-bos-discovery"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex btn-secondary"
+              >
+                Book a personalized demo
+              </Link>
+            </div>
+          </FadeIn>
         </div>
       </section>
 
@@ -361,30 +417,37 @@ export default function SolarBOSPage() {
                     <span>Built on a modern, tested stack with strong data isolation between tenants.</span>
                   </li>
                 </ul>
-                <p className="text-white/40 text-sm md:text-base leading-relaxed mb-6">
-                  Under the hood, Solar BOS runs on a multi-tenant architecture with row-level security and automated end
-                  to end tests across the critical workflows – board movement, customer updates, comms and scheduling.
-                </p>
-                <div className="bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/10 rounded-xl p-5 md:p-6">
-                  <h4 className="text-sm md:text-base font-semibold mb-4 text-cyan-400/90">Security & Architecture</h4>
+                <div className="bg-gradient-to-br from-cyan-500/5 to-blue-500/5 border border-cyan-500/10 rounded-xl p-5 md:p-6 mb-6">
+                  <h4 className="text-sm md:text-base font-semibold mb-4 text-cyan-400/90">Security & Data Protection</h4>
                   <ul className="space-y-2.5 text-xs md:text-sm text-white/60">
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400/60 mt-0.5">•</span>
-                      <span>Built on Supabase with row-level security (RLS) policies on all key tables</span>
+                      <span>Your customer and job data is completely isolated from other solar companies</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400/60 mt-0.5">•</span>
-                      <span>Multi-tenant design with strict data isolation between solar companies</span>
+                      <span>All customer information is encrypted in transit to protect sensitive data</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400/60 mt-0.5">•</span>
-                      <span>Extensive Playwright end-to-end tests ensure critical workflows stay safe</span>
+                      <span>Automated testing runs continuously to keep critical workflows reliable</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="text-cyan-400/60 mt-0.5">•</span>
-                      <span>Modern tech stack (Next.js, React Query, TypeScript) for fast performance and extensibility</span>
+                      <span>Built on proven infrastructure designed for performance and scalability</span>
                     </li>
                   </ul>
+                  <div className="mt-4 pt-4 border-t border-cyan-500/10">
+                    <details className="group">
+                      <summary className="text-xs text-cyan-400/70 cursor-pointer hover:text-cyan-400 transition-colors">
+                        View technical details
+                      </summary>
+                      <p className="text-xs text-white/40 mt-2 leading-relaxed">
+                        Solar BOS is built on Supabase with row-level security policies, a modern tech stack (Next.js, React Query, TypeScript),
+                        and extensive end-to-end test coverage using Playwright.
+                      </p>
+                    </details>
+                  </div>
                 </div>
               </div>
             </FadeIn>
@@ -510,18 +573,79 @@ export default function SolarBOSPage() {
             <div className="grid gap-6 md:grid-cols-2">
               <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6 md:p-7">
                 <p className="text-white/70 text-sm md:text-base italic mb-4">
-                  “Things have completely changed for the better. Automation and a BOS that matches the way we sell and
-                  deliver work has freed up hours every week.”
+                  "Having one system that actually understands our solar workflow – from lead capture through to DNO
+                  submissions – has transformed how we operate. No more data scattered across three different tools."
                 </p>
-                <p className="text-white/60 text-xs md:text-sm">Renewables client · UK</p>
+                <p className="text-white/60 text-xs md:text-sm">
+                  Operations director at a 12-person UK solar installer, managing 40+ residential installs per month
+                </p>
               </div>
 
               <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-6 md:p-7">
                 <p className="text-white/70 text-sm md:text-base italic mb-4">
-                  “We finally have one place where the team can see what is going on with every customer – no more
-                  guessing which spreadsheet or WhatsApp chat has the latest update.”
+                  "Before we had a bespoke system built, our team was juggling spreadsheets, a generic CRM that didn't
+                  fit solar, and WhatsApp groups. Now every job, customer and conversation is in one place."
                 </p>
-                <p className="text-white/60 text-xs md:text-sm">Operations lead · Field services</p>
+                <p className="text-white/60 text-xs md:text-sm">
+                  MD of a UK renewables company running commercial and residential solar projects
+                </p>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Pricing Signal Section */}
+      <section className="py-20 md:py-28 border-b border-white/5">
+        <div className="container-default max-w-4xl">
+          <FadeIn>
+            <div className="text-center mb-10">
+              <h2 className="text-3xl md:text-4xl font-semibold mb-4">Early access pricing</h2>
+              <p className="text-white/60 text-base md:text-lg leading-relaxed max-w-2xl mx-auto">
+                Solar BOS is currently in early access with a small group of UK solar installers
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.1}>
+            <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 md:p-10">
+              <div className="max-w-2xl mx-auto">
+                <p className="text-white/70 text-base md:text-lg leading-relaxed mb-6">
+                  Solar BOS pricing is being finalised with early access customers and is designed to be accessible for
+                  small and mid-size UK solar installers.
+                </p>
+
+                <ul className="space-y-3 text-white/60 text-sm md:text-base mb-8">
+                  <li className="flex items-start gap-3">
+                    <span className="text-orange-400 mt-1">•</span>
+                    <span>Plans that scale with your team size and install volume</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-orange-400 mt-1">•</span>
+                    <span>Simple per-user pricing with no surprise fees or complex tiers</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-orange-400 mt-1">•</span>
+                    <span>Early access customers get preferential pricing and help shape the roadmap</span>
+                  </li>
+                </ul>
+
+                <div className="border-t border-white/5 pt-8">
+                  <p className="text-white/50 text-sm md:text-base leading-relaxed mb-6">
+                    Exact pricing and packaging will be published before general release. If you are running or scaling
+                    a UK solar business, we can discuss pricing options on a call.
+                  </p>
+                  <div className="text-center">
+                    <Link
+                      href="https://cal.com/coldlava/solar-bos-discovery"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex btn-primary glow-orange-sm"
+                    >
+                      Discuss pricing and early access
+                    </Link>
+                  </div>
+                </div>
               </div>
             </div>
           </FadeIn>

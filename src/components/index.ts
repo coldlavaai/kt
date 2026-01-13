@@ -26,3 +26,5 @@ export { OrganizationSchema, LocalBusinessSchema, ServiceSchema, WebsiteSchema, 
 export { StickyCTA } from './StickyCTA'
 export { BOSSwiperCarousel } from './BOSSwiperCarousel'
 export { ScrollReveal, ScrollFadeIn } from './ScrollReveal'
+export { ProductScreenshot } from './ProductScreenshot'
+export { VideoEmbed } from './VideoEmbed'

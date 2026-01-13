@@ -34,10 +34,20 @@ export function Footer() {
               Services
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A962] transition-all duration-300 group-hover:w-full" />
             </Link>
-            <Link href="#bos" className="relative hover:text-white transition-colors group">
-              BOS
-              <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A962] transition-all duration-300 group-hover:w-full" />
-            </Link>
+            <div className="relative group">
+              <Link href="#bos" className="relative hover:text-white transition-colors">
+                BOS
+                <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A962] transition-all duration-300 group-hover:w-full" />
+              </Link>
+              <div className="absolute left-0 mt-2 hidden min-w-[160px] rounded-md border border-white/10 bg-black/95 shadow-lg group-hover:block group-focus-within:block z-10">
+                <Link
+                  href="/solar-bos"
+                  className="block px-3 py-2 text-xs text-white/70 hover:text-white hover:bg-white/5 transition-colors rounded-md"
+                >
+                  Solar BOS
+                </Link>
+              </div>
+            </div>
             <Link href="#clients" className="relative hover:text-white transition-colors group">
               Clients
               <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#C9A962] transition-all duration-300 group-hover:w-full" />
